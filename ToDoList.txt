@@ -1,0 +1,7 @@
+Done : Make hints reactive to new numbers
+Have hints screen show more than one hint
+Add info to help screen
+readjust buttons and elements
+make logo for first panel
+find where on github to upload Jar and test that it works
+take screen caps of the app and make survey

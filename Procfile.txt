@@ -1,1 +1,0 @@
-worker: java -jar GameOf24Environ-1.0-SNAPSHOT.jar

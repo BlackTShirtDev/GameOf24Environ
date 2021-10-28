@@ -46,6 +46,7 @@ public class gameState {
     public static int points = 0;
     
     public static String[] hints = new String[20];
+    public static String[] displyHints = new String[3];
     
     public static boolean addButtTog, SubButtTog, muliButtTog, divButtTog, numButt1,
             numButt2, numButt3, numButt4 = false;
@@ -58,6 +59,7 @@ public class gameState {
 //    public static ButtonGroup num1ButtGroup = new ButtonGroup();
 //    public static ButtonGroup num2ButtGroup = new ButtonGroup();
     public static ButtonGroup operButtGroup = new ButtonGroup();
+    public static ButtonGroup hintButtGroup = new ButtonGroup();
          
     public static Scanner scanner = new Scanner(System.in);
     
@@ -234,7 +236,11 @@ public class gameState {
        difficulty = gui.difficultySlider.getValue() / 10;
        
        gui.pointsAmountLabel.setText("0");
-        
+       
+       hintButtGroup.add(hintGUI.hint1Button);
+       hintButtGroup.add(hintGUI.hint2Button);
+       hintButtGroup.add(hintGUI.hint3Button);
+              
        gui.NumButt1.addItemListener(new numButtonChanged(Integer.parseInt(gui.NumButt1.getText()), gui.NumButt1));
        gui.NumButt2.addItemListener(new numButtonChanged(Integer.parseInt(gui.NumButt2.getText()), gui.NumButt2));
        gui.NumButt3.addItemListener(new numButtonChanged(Integer.parseInt(gui.NumButt3.getText()), gui.NumButt3));
@@ -332,7 +338,9 @@ public class gameState {
                 
                 hintGUI.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 
-                hintGUI.hintTextArea.setText(getHintText());
+                getHintText();
+                
+                hintGUI.hintTextArea.setText(displyHints[0]);
                 
             }
        });
@@ -347,31 +355,63 @@ public class gameState {
             }
        });
        
+       hintGUI.hint1Button.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+           
+                hintGUI.hintTextArea.setText(displyHints[0]);
+            }
+
+       });
+       
+        hintGUI.hint2Button.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+           
+                hintGUI.hintTextArea.setText(displyHints[1]);
+            }
+
+       });
+        
+        hintGUI.hint3Button.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+           
+                hintGUI.hintTextArea.setText(displyHints[2]);
+            }
+
+       });
+       
     }
     
-    public static String getHintText(){
+    public static void getHintText(){
     
-        String hint = "";
+        String hint1 = "";
+        String hint2 = "";
+        String hint3 = "";
         
         
         for(int i = 0; i < hints.length; i++){
         
             if(hints[i].contains("(")){
                 
-                hint = "Try starting with this \n";
+                hint1 = "Try multiplying or dividing to make a small product";
+                
+                hint2 = "Working backwards might help";
+                
+                hint3 = "Try starting with this \n";
             
-                hint = hint + " " + hints[i].substring(hints[i].indexOf("("), hints[i].indexOf(")") + 1);
-                
-                return hint;
-                
+                hint3 = hint1 + " " + hints[i].substring(hints[i].indexOf("("), hints[i].indexOf(")") + 1);
+                      
             } else {
-                hint = hints[0];
+                hint1 = hints[0];
             }
         }
         
-        
-        return hint;
-    
+        displyHints[0] = hint1;
+        displyHints[1] = hint1;
+        displyHints[2] = hint1;
+
     }
     
     public static void checkForWin(){
@@ -429,6 +469,8 @@ public class gameState {
     static void loadNumbersStart(){
         
         difficulty = gui.difficultySlider.getValue() / 10;
+        
+        ansCount = 0;
         
         while (ansCount < difficulty){
             
