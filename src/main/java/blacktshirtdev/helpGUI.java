@@ -27,17 +27,42 @@ public class helpGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        helpPanel = new javax.swing.JScrollPane();
+        helpTextArea = new javax.swing.JTextArea();
+        okayHintButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        helpPanel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        helpTextArea.setColumns(20);
+        helpTextArea.setRows(5);
+        helpTextArea.setText("The object of the game is to make 24. To do this all you need to do is\n click two of the number buttons and than an operator button at the\n bottom.\n You continue doing this until you are left with 24!\n\nThe reset button will reset all the number from 0 back to what they\n were at the beginning of the round.\n\nThe shuffle button will give you new numbers to play with\n\nThe hint button will give you a quick hint on how to solve the current\n numbers\n");
+        helpPanel.setViewportView(helpTextArea);
+
+        okayHintButton.setLabel("Okay");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(helpPanel)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(156, 156, 156)
+                .addComponent(okayHintButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(171, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(helpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(okayHintButton)
+                .addContainerGap())
         );
 
         pack();
@@ -79,5 +104,8 @@ public class helpGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JScrollPane helpPanel;
+    public javax.swing.JTextArea helpTextArea;
+    public javax.swing.JButton okayHintButton;
     // End of variables declaration//GEN-END:variables
 }

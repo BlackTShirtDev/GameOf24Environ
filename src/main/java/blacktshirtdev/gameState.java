@@ -179,7 +179,7 @@ public class gameState {
                     gui.logTextArea.setEditable(true);
                     
                     gui.logTextArea.setText(gui.logTextArea.getText() + gui.firstNumLabel.getText() +" "+
-                            gui.operLabel.getText() +" "+ gui.secondNumLabel.getText() + 
+                             gui.secondNumLabel.getText() + 
                             " = " + String.valueOf(userCalculation(buttPress, operator)));
                     
                     gui.logTextArea.setText(gui.logTextArea.getText() + "\r\n");
@@ -341,7 +341,8 @@ public class gameState {
                 getHintText();
                 
                 hintGUI.hintTextArea.setText(displyHints[0]);
-                
+                hintGUI.hint1Button.setEnabled(true);
+                    
             }
        });
        
@@ -370,7 +371,7 @@ public class gameState {
            
                 hintGUI.hintTextArea.setText(displyHints[1]);
             }
-
+                
        });
         
         hintGUI.hint3Button.addActionListener(new ActionListener(){
@@ -381,6 +382,23 @@ public class gameState {
             }
 
        });
+        
+        gui.helpButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               helpGUI.setVisible(true);
+               helpGUI.helpTextArea.setEditable(false);
+            }
+        });
+        
+        helpGUI.okayHintButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) { 
+            
+               helpGUI.setVisible(false);
+            
+            }
+        });
        
     }
     
@@ -401,16 +419,16 @@ public class gameState {
                 
                 hint3 = "Try starting with this \n";
             
-                hint3 = hint1 + " " + hints[i].substring(hints[i].indexOf("("), hints[i].indexOf(")") + 1);
+                hint3 = hint3 + " " + hints[i].substring(hints[i].indexOf("("), hints[i].indexOf(")") + 1);
                       
             } else {
-                hint1 = hints[0];
+                //hint1 = hints[0];
             }
         }
         
         displyHints[0] = hint1;
-        displyHints[1] = hint1;
-        displyHints[2] = hint1;
+        displyHints[1] = hint2;
+        displyHints[2] = hint3;
 
     }
     
@@ -503,7 +521,7 @@ public class gameState {
         operButtGroup.add(gui.MultiButt);
         
         gui.firstNumLabel.setText(" ");
-        gui.operLabel.setText(" ");
+        //gui.operLabel.setText(" ");
         gui.secondNumLabel.setText(" ");
     
     }
@@ -549,19 +567,19 @@ public class gameState {
         if (buttPress.size() == 1){
         
             gui.firstNumLabel.setText(String.valueOf(buttPress.elementAt(0)));
-            gui.operLabel.setText(operator);
+           // gui.operLabel.setText(operator);
             gui.secondNumLabel.setText(" ");
         } else if (buttPress.size() == 2){
             
             gui.firstNumLabel.setText(String.valueOf(buttPress.elementAt(0)));
-            gui.operLabel.setText(operator);
+          //  gui.operLabel.setText(operator);
             gui.secondNumLabel.setText(String.valueOf(buttPress.elementAt(1)));
         }
         
         if (buttPress.empty()){
         
             gui.firstNumLabel.setText(" ");
-            gui.operLabel.setText(" ");
+          //gui.operLabel.setText(" ");
             gui.secondNumLabel.setText(" ");
         
         }
