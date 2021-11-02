@@ -25,8 +25,42 @@ public class Entity {
     public Entity(gameState controller){this.controller = controller; }
     
     //Percepts and Actions here
+    @AsPercept(name = "numbers", multiplePercepts = true, multipleArguments = true, filter = Filter.Type.ONCE)
+    public List<Integer> discs() {
+        List<Integer> numbers = new ArrayList<Integer>();
+
+        if (controller.getNumbers() != null) {
+            for (Integer number : controller.getNumbers()) {
+                numbers.add(number);
+            }
+        }
+
+        return numbers;
+    }
     
-//    @AsPercept(name="button", multiplePercepts=true, multipleArguments=true)
-//    public
+    @AsAction(name = "press")
+    public void pressButton(int buttonNumber) {
+        
+        // buttonNumber corrsponds to buttons from top left going clockwise
+
+        // Perform checks..
+
+        // Execute actual command.
+        //controller.moveDisc(controller.getPins()[from], controller.getPins()[to]);
+    }
+    
+    @AsAction(name = "AtoSmessage")
+    public void AtoSmessage(String message) {
+        
+        
+        controller.AtoSmessage(message);
+        
+        // buttonNumber corrsponds to buttons from top left going clockwise
+
+        // Perform checks..
+
+        // Execute actual command.
+        //controller.moveDisc(controller.getPins()[from], controller.getPins()[to]);
+    }
       
 }

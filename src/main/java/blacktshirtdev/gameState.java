@@ -388,6 +388,7 @@ public class gameState {
             public void actionPerformed(ActionEvent e) {
                helpGUI.setVisible(true);
                helpGUI.helpTextArea.setEditable(false);
+               helpGUI.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             }
         });
         
@@ -401,6 +402,18 @@ public class gameState {
         });
        
     }
+    
+    //Agent Methods
+    
+    public static void AtoSmessage(String message){
+    
+        gui.agentTestMessage.setText(message);
+        
+    }
+    
+    
+    
+    //End Methods
     
     public static void getHintText(){
     
@@ -470,9 +483,16 @@ public class gameState {
     }
     
     
-    public static void getNumbers(){
+    public static List<Integer> getNumbers(){
     
+        List<Integer> numbers = new ArrayList<Integer>();
         
+        numbers.add(Integer.parseInt(gui.NumButt1.getText()));
+        numbers.add(Integer.parseInt(gui.NumButt2.getText()));
+        numbers.add(Integer.parseInt(gui.NumButt3.getText()));
+        numbers.add(Integer.parseInt(gui.NumButt4.getText()));
+        
+        return numbers;
     
     }
     
@@ -501,7 +521,7 @@ public class gameState {
         
             for (Expression exp : getExpressions(Arrays.asList(A, B, C, D))){
                 if (exp.evaluate() == 24) {
-                    //System.out.println(exp); 
+                    System.out.println(exp); 
                     hints[ansCount] = exp.toString();
                     ansCount += 1;
                     //gui.label1.setText(String.valueOf(ansCount)); ;

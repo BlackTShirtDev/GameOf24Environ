@@ -104,36 +104,46 @@
           <version>3.0.0</version>
         </plugin>
         <plugin>
-            <artifactId>maven-assembly-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                        <mainClass>blacktshirtdev.TwentyFourGame</mainClass>
-                        </manifest>
-                    </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                </configuration>
-        </plugin>
-        <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-pmd-plugin</artifactId>
             <version>3.13.0</version>
-            <configuration>
-            <!-- failOnViolation is actually true by default, but can be disabled -->
-            <failOnViolation>true</failOnViolation>
-            <!-- printFailingErrors is pretty useful -->
-            <printFailingErrors>true</printFailingErrors>
-            </configuration>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>check</goal>
-                </goals>
-              </execution>
-            </executions>
         </plugin>
+        
+        <!-- Plugin to make JAR able to tell agent what it can do -->
+        
+         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <configuration>
+              <archive>
+                  <manifest>
+                      <addClasspath>true</addClasspath>
+                      <mainClass>twentyFourei.twentyfourei</mainClass>
+                  </manifest>
+              </archive>
+          </configuration>
+
+              <executions>
+                  <execution>
+                      <id>Agent</id>
+                      <goals>
+                          <goal>jar</goal>
+                      </goals>
+                      <phase>package</phase>
+                      <configuration>
+                          <archive>
+                              <manifest>
+                                  <addClasspath>true</addClasspath>
+                                  <mainClass>twentyFourei.twentyfourei</mainClass>
+                              </manifest>
+                          </archive>
+                          <classifier>agent</classifier>
+                      </configuration>
+                  </execution>
+              </executions>
+         </plugin>   
+        
+        
       </plugins>
     </pluginManagement>
   </build>

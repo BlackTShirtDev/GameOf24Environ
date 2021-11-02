@@ -36,7 +36,7 @@ public class twentyfourei extends AbstractEnvironment{
         reset(parameters);
         try
         {
-          registerEntity("entity", "gamecontroller", new Entity(this.game));
+          registerEntity("entity24", "gamecontroller", new Entity(this.game));
         } catch (EntityException e) {
           throw new ManagementException("Could not create an entity", e);
         }
