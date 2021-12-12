@@ -1,0 +1,233 @@
+Logan has started a new session at Fri Dec 10 09:29:07 CST 2021
+Game Start: Numbers at start: 11 13 13 13, Difficulty: 5,Points: 0,Solution Expressions: 
+11 + 13 + 13 - 13
+11 + 13 - 13 + 13
+11 + 13 * 13 / 13
+11 + 13 / 13 * 13
+11 - 13 + 13 + 13
+11 * 13 / 13 + 13
+11 / 13 * 13 + 13
+Logan has started a new session at Fri Dec 10 12:28:49 CST 2021
+Game Start: Numbers at start: 6 4 11 11, Difficulty: 5,Points: 0,Solution Expressions: 
+6 - 4 + 11 + 11
+6 * 4 + 11 - 11
+6 * 4 - 11 + 11
+6 * 4 * 11 / 11
+6 * 4 / 11 * 11
+Logan has started a new session at Fri Dec 10 12:34:02 CST 2021
+Game Start: Numbers at start: 13 11 11 11, Difficulty: 5,Points: 0,Solution Expressions: 
+13 + 11 + 11 - 11
+13 + 11 - 11 + 11
+13 + 11 * 11 / 11
+13 + 11 / 11 * 11
+13 - 11 + 11 + 11
+13 * 11 / 11 + 11
+13 / 11 * 11 + 11
+Logan has started a new session at Fri Dec 10 14:53:28 CST 2021
+Logan has started a new session at Sat Dec 11 20:53:09 CST 2021
+Logan has started a new session at Sat Dec 11 20:58:32 CST 2021
+Logan has started a new session at Sat Dec 11 20:59:00 CST 2021
+Logan has started a new session at Sat Dec 11 20:59:40 CST 2021
+Logan has started a new session at Sat Dec 11 21:01:27 CST 2021
+Logan has started a new session at Sat Dec 11 21:01:44 CST 2021
+Logan has started a new session at Sat Dec 11 21:02:29 CST 2021
+Logan has started a new session at Sat Dec 11 21:12:48 CST 2021
+Logan has started a new session at Sat Dec 11 22:01:00 CST 2021
+Game Start: Numbers at start: 3 8 1 1, Difficulty: 5,Points: 0,Solution Expressions: 
+3 * 8 + 1 - 1
+3 * 8 - 1 + 1
+3 * 8 * 1 * 1
+3 * 8 * 1 / 1
+3 * 8 / 1 * 1
+3 * 8 / 1 / 1
+Logan has started a new session at Sat Dec 11 22:35:08 CST 2021
+Game Start: Numbers at start: 4 2 6 12, Difficulty: 5,Points: 0,Solution Expressions: 
+4 + 2 + 6 + 12
+4 + 2 * 6 - 12
+4 - 2 * 6 + 12
+4 * 2 - 6 * 12
+4 / 2 * 6 + 12
+Logan has started a new session at Sat Dec 11 22:36:37 CST 2021
+Game Start: Numbers at start: 12 1 12 1, Difficulty: 5,Points: 0,Solution Expressions: 
+12 + 1 + 12 - 1
+12 - 1 + 12 + 1
+12 * 1 + 12 * 1
+12 * 1 + 12 / 1
+12 / 1 + 12 * 1
+12 / 1 + 12 / 1
+Logan has started a new session at Sat Dec 11 23:03:49 CST 2021
+Game Start: Numbers at start: 13 1 1 11, Difficulty: 5,Points: 0,Solution Expressions: 
+13 + 1 - 1 + 11
+13 - 1 + 1 + 11
+13 * 1 * 1 + 11
+13 * 1 / 1 + 11
+13 / 1 * 1 + 11
+13 / 1 / 1 + 11
+Logan has started a new session at Sat Dec 11 23:42:44 CST 2021
+Game Start: Numbers at start: 12 1 1 12, Difficulty: 5,Points: 0,Solution Expressions: 
+12 + 1 - 1 + 12
+12 - 1 + 1 + 12
+12 * 1 * 1 + 12
+12 * 1 / 1 + 12
+12 / 1 * 1 + 12
+12 / 1 / 1 + 12
+Logan has started a new session at Sat Dec 11 23:43:52 CST 2021
+Logan has started a new session at Sun Dec 12 00:17:23 CST 2021
+Game Start: Numbers at start: 3 8 3 3, Difficulty: 5,Points: 0,Solution Expressions: 
+3 + 8 - 3 * 3
+3 * 8 + 3 - 3
+3 * 8 - 3 + 3
+3 * 8 * 3 / 3
+3 * 8 / 3 * 3
+Logan has started a new session at Sun Dec 12 00:18:13 CST 2021
+Logan has started a new session at Sun Dec 12 00:22:25 CST 2021
+Game Start: Numbers at start: 12 2 1 1, Difficulty: 5,Points: 0,Solution Expressions: 
+12 * 2 + 1 - 1
+12 * 2 - 1 + 1
+12 * 2 * 1 * 1
+12 * 2 * 1 / 1
+12 * 2 / 1 * 1
+12 * 2 / 1 / 1
+Logan has started a new session at Sun Dec 12 00:22:40 CST 2021
+Logan has started a new session at Sun Dec 12 00:23:20 CST 2021
+Game Start: Numbers at start: 12 6 6 12, Difficulty: 5,Points: 0,Solution Expressions: 
+12 + 6 - 6 + 12
+12 - 6 + 6 + 12
+12 - 6 * 6 - 12
+12 * 6 / 6 + 12
+12 / 6 * 6 + 12
+Student Work: 6 + 6 = 12 Time: Sun Dec 12 00:23:26 CST 2021 , Relevant Solutions: 12 - 6 + 6 + 12
+Student Work: 12 + 12 = 24 Time: Sun Dec 12 00:23:33 CST 2021 , Relevant Solutions: Logan has started a new session at Sun Dec 12 00:23:44 CST 2021
+Logan has started a new session at Sun Dec 12 00:31:51 CST 2021
+Game Start: Numbers at start: 12 12 12 12, Difficulty: 5,Points: 0,Solution Expressions: 
+12 + 12 + 12 - 12
+12 + 12 - 12 + 12
+12 + 12 * 12 / 12
+12 + 12 / 12 * 12
+12 - 12 + 12 + 12
+12 * 12 / 12 + 12
+12 / 12 * 12 + 12
+Logan has started a new session at Sun Dec 12 00:33:33 CST 2021
+Logan has started a new session at Sun Dec 12 00:40:27 CST 2021
+Logan has started a new session at Sun Dec 12 00:43:43 CST 2021
+Game Start: Numbers at start: 4 6 13 13, Difficulty: 5,Points: 998,Solution Expressions: 
+4 - 6 + 13 + 13
+4 * 6 + 13 - 13
+4 * 6 - 13 + 13
+4 * 6 * 13 / 13
+4 * 6 / 13 * 13
+Student Work: 13 - 13 = 0 Time: Sun Dec 12 00:44:13 CST 2021 , Relevant Solutions: 4 * 6 + 13 - 13
+Student Work: 4 * 6 = 24 Time: Sun Dec 12 00:44:17 CST 2021 , Relevant Solutions: 4 * 6 + 13 - 13
+4 * 6 - 13 + 13
+4 * 6 * 13 / 13
+4 * 6 / 13 * 13
+Logan has started a new session at Sun Dec 12 00:50:09 CST 2021
+Game Start: Numbers at start: 6 4 1 1, Difficulty: 5,Points: 998,Solution Expressions: 
+6 * 4 + 1 - 1
+6 * 4 - 1 + 1
+6 * 4 * 1 * 1
+6 * 4 * 1 / 1
+6 * 4 / 1 * 1
+6 * 4 / 1 / 1
+Student Work: 1 - 1 = 0 Time: Sun Dec 12 00:50:23 CST 2021 , Relevant Solutions: 6 * 4 + 1 - 1
+Student Work: 6 * 4 = 24 Time: Sun Dec 12 00:50:27 CST 2021 , Relevant Solutions: 6 * 4 + 1 - 1
+6 * 4 - 1 + 1
+6 * 4 * 1 * 1
+6 * 4 * 1 / 1
+6 * 4 / 1 * 1
+6 * 4 / 1 / 1
+Student Work: 1 - 1 = 0 Time: Sun Dec 12 00:50:39 CST 2021 , Relevant Solutions: 13 + 1 + 11 - 1
+Student Work: 11 + 13 = 24 Time: Sun Dec 12 00:50:43 CST 2021 , Relevant Solutions: Logan has started a new session at Sun Dec 12 00:51:25 CST 2021
+Game Start: Numbers at start: 9 4 1 11, Difficulty: 5,Points: 995,Solution Expressions: 
+9 + 4 * 1 + 11
+9 + 4 / 1 + 11
+9 * 4 - 1 - 11
+9 / 4 * 1 * 11
+9 / 4 / 1 * 11
+Student Work: 9 * 4 = 36 Time: Sun Dec 12 00:51:52 CST 2021 , Relevant Solutions: 9 * 4 - 1 - 11
+Student Work: 36 - 11 = 25 Time: Sun Dec 12 00:51:58 CST 2021 , Relevant Solutions: Student Work: 25 - 1 = 24 Time: Sun Dec 12 00:52:08 CST 2021 , Relevant Solutions: Logan has started a new session at Sun Dec 12 00:56:24 CST 2021
+Game Start: Numbers at start: 6 4 1 1, Difficulty: 5,Points: 998,Solution Expressions: 
+6 * 4 + 1 - 1
+6 * 4 - 1 + 1
+6 * 4 * 1 * 1
+6 * 4 * 1 / 1
+6 * 4 / 1 * 1
+6 * 4 / 1 / 1
+Student Work: 6 * 4 = 24 Time: Sun Dec 12 00:56:30 CST 2021 , Relevant Solutions: 6 * 4 + 1 - 1
+6 * 4 - 1 + 1
+6 * 4 * 1 * 1
+6 * 4 * 1 / 1
+6 * 4 / 1 * 1
+6 * 4 / 1 / 1
+Student Work: 1 - 1 = 0 Time: Sun Dec 12 00:56:41 CST 2021 , Relevant Solutions: 6 * 4 + 1 - 1
+Logan has started a new session at Sun Dec 12 00:57:00 CST 2021
+Game Start: Numbers at start: 3 8 12 12, Difficulty: 5,Points: 997,Solution Expressions: 
+3 * 8 + 12 - 12
+3 * 8 - 12 + 12
+3 * 8 * 12 / 12
+3 * 8 / 12 * 12
+3 / 8 + 12 + 12
+Student Work: 3 * 8 = 24 Time: Sun Dec 12 00:57:18 CST 2021 , Relevant Solutions: 3 * 8 + 12 - 12
+3 * 8 - 12 + 12
+3 * 8 * 12 / 12
+3 * 8 / 12 * 12
+Student Work: 12 - 12 = 0 Time: Sun Dec 12 00:57:28 CST 2021 , Relevant Solutions: 3 * 8 + 12 - 12
+Logan has started a new session at Sun Dec 12 01:11:41 CST 2021
+Game Start: Numbers at start: 11 13 13 13, Difficulty: 5,Points: 998,Solution Expressions: 
+11 + 13 + 13 - 13
+11 + 13 - 13 + 13
+11 + 13 * 13 / 13
+11 + 13 / 13 * 13
+11 - 13 + 13 + 13
+11 * 13 / 13 + 13
+11 / 13 * 13 + 13
+Student Work: 13 + 13 = 26 Time: Sun Dec 12 01:11:54 CST 2021 , Relevant Solutions: 11 + 13 + 13 - 13
+11 + 13 - 13 + 13
+11 - 13 + 13 + 13
+11 * 13 / 13 + 13
+11 / 13 * 13 + 13
+Student Work: 26 + 13 = 39 Time: Sun Dec 12 01:11:58 CST 2021 , Relevant Solutions: Student Work: 39 - 11 = 28 Time: Sun Dec 12 01:12:05 CST 2021 , Relevant Solutions: Student Work: 13 + 13 = 26 Time: Sun Dec 12 01:12:14 CST 2021 , Relevant Solutions: 11 + 13 + 13 - 13
+11 + 13 - 13 + 13
+11 - 13 + 13 + 13
+11 * 13 / 13 + 13
+11 / 13 * 13 + 13
+Student Work: 26 - 11 = 15 Time: Sun Dec 12 01:12:19 CST 2021 , Relevant Solutions: Student Work: 6 * 4 = 24 Time: Sun Dec 12 01:12:36 CST 2021 , Relevant Solutions: Student Work: 24 - 12 = 12 Time: Sun Dec 12 01:12:45 CST 2021 , Relevant Solutions: Student Work: 12 * 2 = 24 Time: Sun Dec 12 01:12:50 CST 2021 , Relevant Solutions: Logan has started a new session at Sun Dec 12 01:13:21 CST 2021
+Game Start: Numbers at start: 12 2 6 6, Difficulty: 5,Points: 995,Solution Expressions: 
+12 - 2 - 6 * 6
+12 * 2 + 6 - 6
+12 * 2 - 6 + 6
+12 * 2 * 6 / 6
+12 * 2 / 6 * 6
+Student Work: 6 - 6 = 0 Time: Sun Dec 12 01:13:37 CST 2021 , Relevant Solutions: 12 * 2 + 6 - 6
+Student Work: 2 * 12 = 24 Time: Sun Dec 12 01:13:41 CST 2021 , Relevant Solutions: Logan has started a new session at Sun Dec 12 02:11:45 CST 2021
+Game Start: Numbers at start: 11 9 1 4, Difficulty: 5,Points: 998,Solution Expressions: 
+11 + 9 * 1 + 4
+11 + 9 / 1 + 4
+11 * 9 - 1 / 4
+11 * 9 * 1 / 4
+11 * 9 / 1 / 4
+Logan has started a new session at Sun Dec 12 03:26:41 CST 2021
+Game Start: Numbers at start: 4 6 6 6, Difficulty: 5,Points: 0,Solution Expressions: 
+4 + 6 - 6 * 6
+4 - 6 + 6 * 6
+4 * 6 + 6 - 6
+4 * 6 - 6 + 6
+4 * 6 * 6 / 6
+4 * 6 / 6 * 6
+4 / 6 * 6 * 6
+Logan has started a new session at Sun Dec 12 03:27:11 CST 2021
+Logan has started a new session at Sun Dec 12 03:28:53 CST 2021
+Logan has started a new session at Sun Dec 12 03:29:37 CST 2021
+Game Start: Numbers at start: 8 8 8 3, Difficulty: 5,Points: 0,Solution Expressions: 
+8 + 8 - 8 * 3
+8 - 8 + 8 * 3
+8 * 8 + 8 / 3
+8 * 8 / 8 * 3
+8 / 8 * 8 * 3
+Logan has started a new session at Sun Dec 12 03:30:15 CST 2021
+Game Start: Numbers at start: 6 4 2 2, Difficulty: 5,Points: 0,Solution Expressions: 
+6 + 4 + 2 * 2
+6 * 4 + 2 - 2
+6 * 4 - 2 + 2
+6 * 4 * 2 / 2
+6 * 4 / 2 * 2

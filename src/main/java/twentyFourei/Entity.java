@@ -25,21 +25,61 @@ public class Entity {
     public Entity(gameState controller){this.controller = controller; }
     
     //Percepts and Actions here
-    @AsPercept(name = "numbers", multiplePercepts = true, multipleArguments = true, filter = Filter.Type.ONCE)
-    public List<Integer> discs() {
-        List<Integer> numbers = new ArrayList<Integer>();
-
+    @AsPercept(name = "numbers", filter = Filter.Type.ON_CHANGE)
+    public List<Integer> numbers() {
+        List numbers = new ArrayList<Integer>();
+        
         if (controller.getNumbers() != null) {
+            numbers.clear();
             for (Integer number : controller.getNumbers()) {
+                
+ 
                 numbers.add(number);
+
             }
         }
 
         return numbers;
     }
     
-    @AsAction(name = "press")
+    @AsPercept(name="control", filter = Filter.Type.ONCE)
+    public String control(){
+            String control = " ";
+            
+            control = controller.getAgentControl();
+            
+            return control;
+    
+    }
+    
+    
+    
+    
+    
+    @AsAction(name = "pressFirstNum")
     public void pressButton(int buttonNumber) {
+        
+        // buttonNumber corrsponds to buttons from top left going clockwise
+
+        // Perform checks..
+
+        // Execute actual command.
+        //controller.moveDisc(controller.getPins()[from], controller.getPins()[to]);
+    }
+    
+    @AsAction(name = "pressSecondNum")
+    public void pressButton2(int buttonNumber) {
+        
+        // buttonNumber corrsponds to buttons from top left going clockwise
+
+        // Perform checks..
+
+        // Execute actual command.
+        //controller.moveDisc(controller.getPins()[from], controller.getPins()[to]);
+    }
+    
+     @AsAction(name = "pressOperator")
+    public void pressOperator(String operator) {
         
         // buttonNumber corrsponds to buttons from top left going clockwise
 
@@ -53,7 +93,7 @@ public class Entity {
     public void AtoSmessage(String message) {
         
         
-        controller.AtoSmessage(message);
+        //controller.AtoSmessage(message);
         
         // buttonNumber corrsponds to buttons from top left going clockwise
 
@@ -62,5 +102,7 @@ public class Entity {
         // Execute actual command.
         //controller.moveDisc(controller.getPins()[from], controller.getPins()[to]);
     }
+    
+    
       
 }

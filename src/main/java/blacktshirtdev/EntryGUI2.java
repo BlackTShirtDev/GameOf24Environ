@@ -31,20 +31,18 @@ public class EntryGUI2 extends javax.swing.JFrame {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        startPanel = new javax.swing.JPanel();
         singlePlayerButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        twoPlayerButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         leaderBoardTextArea = new javax.swing.JTextArea();
         jLabel17 = new javax.swing.JLabel();
-        agentTestMessage = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        chaosModeButton = new javax.swing.JToggleButton();
+        firstplayersettingsPanel = new javax.swing.JPanel();
+        noInteractionRadio = new javax.swing.JRadioButton();
+        observingAgentRadio = new javax.swing.JRadioButton();
+        watchAgentRadio = new javax.swing.JRadioButton();
         difficultySlider = new javax.swing.JSlider();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -54,7 +52,7 @@ public class EntryGUI2 extends javax.swing.JFrame {
         buttonStartOptions = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         agentPhtotoLabel = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        firstplayerPanel = new javax.swing.JPanel();
         label1 = new java.awt.Label();
         AddButt = new javax.swing.JToggleButton();
         SubButt = new javax.swing.JToggleButton();
@@ -66,7 +64,6 @@ public class EntryGUI2 extends javax.swing.JFrame {
         NumButt4 = new javax.swing.JToggleButton();
         firstNumLabel = new javax.swing.JLabel();
         secondNumLabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -79,13 +76,66 @@ public class EntryGUI2 extends javax.swing.JFrame {
         logTextArea = new javax.swing.JTextArea();
         quitButton = new javax.swing.JButton();
         pointsAmountLabel = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        highScoreAmount = new javax.swing.JLabel();
+        youwinPanel = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         buttQuit = new javax.swing.JButton();
         buttPlayAgain = new javax.swing.JButton();
+        explanationPanel = new javax.swing.JPanel();
+        twoPlayerPanel = new javax.swing.JPanel();
+        label2 = new java.awt.Label();
+        AddButt1 = new javax.swing.JToggleButton();
+        SubButt1 = new javax.swing.JToggleButton();
+        DivButt1 = new javax.swing.JToggleButton();
+        MultiButt1 = new javax.swing.JToggleButton();
+        NumButt5 = new javax.swing.JToggleButton();
+        NumButt6 = new javax.swing.JToggleButton();
+        NumButt7 = new javax.swing.JToggleButton();
+        NumButt8 = new javax.swing.JToggleButton();
+        firstNumLabel1 = new javax.swing.JLabel();
+        secondNumLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        hintButton1 = new javax.swing.JButton();
+        resetButton1 = new javax.swing.JButton();
+        shuffleButton1 = new javax.swing.JButton();
+        helpButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        logTextArea1 = new javax.swing.JTextArea();
+        quitButton1 = new javax.swing.JButton();
+        pointsAmountLabel1 = new javax.swing.JLabel();
+        twoplayerComporCoOp = new javax.swing.JPanel();
+        compStartButton = new javax.swing.JToggleButton();
+        coopStartButton = new javax.swing.JToggleButton();
+        twoPlayerSettingPanel = new javax.swing.JPanel();
+        beServerRadioButton = new javax.swing.JRadioButton();
+        connectToRadioButton = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        serverPortTextField = new javax.swing.JTextField();
+        clientAddressTextField = new javax.swing.JTextField();
+        connectToPortTextField = new javax.swing.JTextField();
+        twoPlayerQuitButt = new javax.swing.JToggleButton();
+        startTwoPlayerButt = new javax.swing.JToggleButton();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        serverToConnectLabel = new javax.swing.JLabel();
+        addressToConnectToLabel = new javax.swing.JLabel();
+        firstTimeUsePanel = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        nameTextField = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        gradeTextField = new javax.swing.JTextField();
+        teacherNameTextField = new javax.swing.JTextField();
+        firstUseQuitButton = new javax.swing.JToggleButton();
+        startContinueButton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Game of 24");
@@ -100,15 +150,10 @@ public class EntryGUI2 extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Two Player");
-
-        jButton4.setText("Settings");
+        twoPlayerButton.setText("Two Player");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel7.setText("Leader Board");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel5.setText("Agent Information");
 
         leaderBoardTextArea.setColumns(20);
         leaderBoardTextArea.setRows(5);
@@ -117,72 +162,64 @@ public class EntryGUI2 extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Alien Encounters", 0, 48)); // NOI18N
         jLabel17.setText("Go For 24");
 
-        agentTestMessage.setText("jLabel18");
+        chaosModeButton.setText("Chaos Mode");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel5)
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(singlePlayerButton))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(agentTestMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))))
+        javax.swing.GroupLayout startPanelLayout = new javax.swing.GroupLayout(startPanel);
+        startPanel.setLayout(startPanelLayout);
+        startPanelLayout.setHorizontalGroup(
+            startPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(startPanelLayout.createSequentialGroup()
+                .addGroup(startPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(startPanelLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel7))
+                    .addGroup(startPanelLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(startPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(startPanelLayout.createSequentialGroup()
+                        .addGap(225, 225, 225)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(startPanelLayout.createSequentialGroup()
+                        .addGap(309, 309, 309)
+                        .addGroup(startPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(twoPlayerButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(singlePlayerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(chaosModeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(0, 264, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        startPanelLayout.setVerticalGroup(
+            startPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(startPanelLayout.createSequentialGroup()
+                .addGroup(startPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(startPanelLayout.createSequentialGroup()
+                        .addContainerGap(135, Short.MAX_VALUE)
+                        .addComponent(jLabel7))
+                    .addGroup(startPanelLayout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel17)))
+                .addGroup(startPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(startPanelLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(agentTestMessage)
-                        .addGap(45, 45, 45)
+                        .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, startPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(singlePlayerButton)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4)
-                        .addGap(54, 54, 54))))
+                        .addComponent(chaosModeButton)
+                        .addGap(12, 12, 12)
+                        .addComponent(twoPlayerButton)
+                        .addGap(42, 42, 42))))
         );
 
-        mainPanel.add(jPanel2, "panelStartMenu");
+        mainPanel.add(startPanel, "panelStartMenu");
 
-        jRadioButton1.setText("Play By Yourself Without Agent Interaction");
+        noInteractionRadio.setText("Play By Yourself Without Agent Interaction");
 
-        jRadioButton2.setText("Play With The Agent Observing And Asking Questions");
+        observingAgentRadio.setText("Play With The Agent Observing And Asking Questions");
 
-        jRadioButton3.setText("Watch The Agent Play While Answering Its Questions ");
+        watchAgentRadio.setText("Watch The Agent Play While Answering Its Questions ");
 
         difficultySlider.setMajorTickSpacing(10);
         difficultySlider.setPaintTicks(true);
@@ -203,99 +240,99 @@ public class EntryGUI2 extends javax.swing.JFrame {
         buttonStartOptions.setText("Start");
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel12.setText("Agent Information");
+        jLabel12.setText("Student Information");
 
         agentPhtotoLabel.setText("Coming Soon...");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout firstplayersettingsPanelLayout = new javax.swing.GroupLayout(firstplayersettingsPanel);
+        firstplayersettingsPanel.setLayout(firstplayersettingsPanelLayout);
+        firstplayersettingsPanelLayout.setHorizontalGroup(
+            firstplayersettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, firstplayersettingsPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(agentPhtotoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(92, 92, 92))
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(firstplayersettingsPanelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(firstplayersettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(firstplayersettingsPanelLayout.createSequentialGroup()
+                        .addGroup(firstplayersettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(firstplayersettingsPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(138, 138, 138)
                                 .addComponent(jLabel9))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(firstplayersettingsPanelLayout.createSequentialGroup()
                                 .addGap(237, 237, 237)
                                 .addComponent(buttonGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(firstplayersettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(firstplayersettingsPanelLayout.createSequentialGroup()
                                 .addGap(61, 61, 61)
                                 .addComponent(buttonStartOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(firstplayersettingsPanelLayout.createSequentialGroup()
                                 .addGap(44, 44, 44)
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(firstplayersettingsPanelLayout.createSequentialGroup()
+                        .addGroup(firstplayersettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(difficultySlider, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jRadioButton1)
-                                    .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jRadioButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
+                            .addGroup(firstplayersettingsPanelLayout.createSequentialGroup()
+                                .addGroup(firstplayersettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(noInteractionRadio)
+                                    .addComponent(observingAgentRadio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(watchAgentRadio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 408, Short.MAX_VALUE)
                                 .addComponent(jLabel12)))
                         .addGap(64, 64, 64))))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        firstplayersettingsPanelLayout.setVerticalGroup(
+            firstplayersettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(firstplayersettingsPanelLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jRadioButton1)
+                .addComponent(noInteractionRadio)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
+                .addGroup(firstplayersettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(observingAgentRadio)
                     .addComponent(jLabel12))
                 .addGap(18, 18, 18)
-                .addComponent(jRadioButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(watchAgentRadio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(agentPhtotoLabel)
                 .addGap(11, 11, 11)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(difficultySlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(firstplayersettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11))
                 .addGap(79, 79, 79)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(firstplayersettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonGoBack)
                     .addComponent(buttonStartOptions))
                 .addContainerGap())
         );
 
-        mainPanel.add(jPanel3, "panelSinglePlayerOptions");
+        mainPanel.add(firstplayersettingsPanel, "panelSinglePlayerOptions");
 
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        firstplayerPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         label1.setName("label1"); // NOI18N
         label1.setText("Click on 2 numbers and then an Operator");
 
-        AddButt.setText("Add");
+        AddButt.setLabel("+");
         AddButt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddButtActionPerformed(evt);
             }
         });
 
-        SubButt.setText("Sub");
+        SubButt.setLabel("-");
 
-        DivButt.setText("Divide");
+        DivButt.setLabel("/");
 
-        MultiButt.setText("Multi");
+        MultiButt.setLabel("*");
 
         NumButt1.setText("jToggleButton5");
         NumButt1.addActionListener(new java.awt.event.ActionListener() {
@@ -313,8 +350,6 @@ public class EntryGUI2 extends javax.swing.JFrame {
         firstNumLabel.setText("jLabel1");
 
         secondNumLabel.setText("jLabel3");
-
-        jLabel2.setText("Operator");
 
         jLabel3.setText("Number 1");
 
@@ -341,138 +376,134 @@ public class EntryGUI2 extends javax.swing.JFrame {
 
         pointsAmountLabel.setText(" ");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel15.setText("Teachable Agent Corner");
+        jLabel27.setText("High Score:");
+        jLabel27.setToolTipText("");
 
-        jLabel16.setText("coming soon...");
+        highScoreAmount.setText("0");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+        javax.swing.GroupLayout firstplayerPanelLayout = new javax.swing.GroupLayout(firstplayerPanel);
+        firstplayerPanel.setLayout(firstplayerPanelLayout);
+        firstplayerPanelLayout.setHorizontalGroup(
+            firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, firstplayerPanelLayout.createSequentialGroup()
+                .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(firstplayerPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, firstplayerPanelLayout.createSequentialGroup()
+                                .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(hintButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(shuffleButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                                    .addComponent(shuffleButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(resetButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(helpButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(quitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(162, 162, 162)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(secondNumLabel)
-                                            .addComponent(jLabel4)))
-                                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(22, 22, 22)
-                                                .addComponent(firstNumLabel)
-                                                .addGap(35, 35, 35))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel3)
-                                                .addGap(27, 27, 27)))
-                                        .addComponent(jLabel2))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(quitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
+                                .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(firstNumLabel))
+                                .addGap(54, 54, 54)
+                                .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(SubButt)
+                                        .addComponent(AddButt)
+                                        .addComponent(DivButt))
+                                    .addGroup(firstplayerPanelLayout.createSequentialGroup()
+                                        .addComponent(MultiButt)
+                                        .addGap(4, 4, 4)))
+                                .addGap(38, 38, 38)
+                                .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(secondNumLabel)
+                                    .addComponent(jLabel4))
+                                .addGap(31, 31, 31))
+                            .addGroup(firstplayerPanelLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(firstplayerPanelLayout.createSequentialGroup()
+                                        .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(NumButt1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(NumButt3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(67, 67, 67)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(NumButt4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(NumButt2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(AddButt)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(SubButt)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(DivButt)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(MultiButt)))))
-                        .addGap(75, 75, 75)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(NumButt2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(67, 67, 67)
+                        .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(firstplayerPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(pointsAmountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(firstplayerPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel27)
+                        .addGap(18, 18, 18)
+                        .addComponent(highScoreAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel15)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hintButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        firstplayerPanelLayout.setVerticalGroup(
+            firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, firstplayerPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(pointsAmountLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27)
+                    .addComponent(highScoreAmount))
+                .addGap(11, 11, 11)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(firstplayerPanelLayout.createSequentialGroup()
+                        .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(NumButt1)
                             .addComponent(NumButt2))
                         .addGap(43, 43, 43)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(NumButt3)
-                            .addComponent(NumButt4))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel4))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(resetButton)
-                        .addGap(12, 12, 12)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(firstNumLabel)
-                            .addComponent(secondNumLabel))
-                        .addGap(14, 14, 14)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NumButt4))
+                        .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(firstplayerPanelLayout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(SubButt)
+                                .addGap(15, 15, 15)
+                                .addComponent(DivButt)
+                                .addGap(18, 18, 18)
+                                .addComponent(MultiButt))
+                            .addGroup(firstplayerPanelLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, firstplayerPanelLayout.createSequentialGroup()
+                                        .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(firstplayerPanelLayout.createSequentialGroup()
+                                                .addComponent(hintButton)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(resetButton)
+                                                .addGap(12, 12, 12))
+                                            .addGroup(firstplayerPanelLayout.createSequentialGroup()
+                                                .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                    .addComponent(AddButt)
+                                                    .addComponent(jLabel4)
+                                                    .addComponent(jLabel3))
+                                                .addGap(29, 29, 29)))
+                                        .addGroup(firstplayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(shuffleButton)
+                                            .addComponent(firstNumLabel))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(helpButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(quitButton))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, firstplayerPanelLayout.createSequentialGroup()
+                                        .addComponent(secondNumLabel)
+                                        .addGap(75, 75, 75)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(AddButt)
-                            .addComponent(SubButt)
-                            .addComponent(DivButt)
-                            .addComponent(MultiButt)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(shuffleButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(helpButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(quitButton)))
-                .addGap(72, 72, 72))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(pointsAmountLabel))
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 18, Short.MAX_VALUE))
         );
 
         AddButt.getAccessibleContext().setAccessibleName("AddButton");
@@ -486,7 +517,7 @@ public class EntryGUI2 extends javax.swing.JFrame {
         firstNumLabel.getAccessibleContext().setAccessibleName("firstNumLabel");
         secondNumLabel.getAccessibleContext().setAccessibleName("secondNumLabel");
 
-        mainPanel.add(jPanel1, "panelSinglePlayer");
+        mainPanel.add(firstplayerPanel, "panelSinglePlayer");
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel13.setText("You made 24!");
@@ -498,48 +529,431 @@ public class EntryGUI2 extends javax.swing.JFrame {
 
         buttPlayAgain.setText("Play Again");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout youwinPanelLayout = new javax.swing.GroupLayout(youwinPanel);
+        youwinPanel.setLayout(youwinPanelLayout);
+        youwinPanelLayout.setHorizontalGroup(
+            youwinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(youwinPanelLayout.createSequentialGroup()
                 .addGap(208, 208, 208)
                 .addComponent(buttQuit, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(148, 148, 148)
                 .addComponent(buttPlayAgain)
-                .addGap(0, 228, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(0, 431, Short.MAX_VALUE))
+            .addGroup(youwinPanelLayout.createSequentialGroup()
                 .addGap(242, 242, 242)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(youwinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGroup(youwinPanelLayout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        youwinPanelLayout.setVerticalGroup(
+            youwinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(youwinPanelLayout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addComponent(jLabel14)
                 .addGap(79, 79, 79)
                 .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                .addGroup(youwinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttQuit)
                     .addComponent(buttPlayAgain))
                 .addContainerGap())
         );
 
-        mainPanel.add(jPanel4, "panelWinning");
+        mainPanel.add(youwinPanel, "panelWinning");
+
+        javax.swing.GroupLayout explanationPanelLayout = new javax.swing.GroupLayout(explanationPanel);
+        explanationPanel.setLayout(explanationPanelLayout);
+        explanationPanelLayout.setHorizontalGroup(
+            explanationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 943, Short.MAX_VALUE)
+        );
+        explanationPanelLayout.setVerticalGroup(
+            explanationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
+        );
+
+        mainPanel.add(explanationPanel, "panelExplain");
+
+        twoPlayerPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        label2.setName("label1"); // NOI18N
+        label2.setText("Click on 2 numbers and then an Operator");
+
+        AddButt1.setLabel("+");
+        AddButt1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddButt1ActionPerformed(evt);
+            }
+        });
+
+        SubButt1.setLabel("-");
+
+        DivButt1.setLabel("/");
+
+        MultiButt1.setLabel("*");
+
+        NumButt5.setText("jToggleButton5");
+        NumButt5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NumButt5ActionPerformed(evt);
+            }
+        });
+
+        NumButt6.setText("jToggleButton6");
+
+        NumButt7.setText("jToggleButton7");
+
+        NumButt8.setText("jToggleButton8");
+
+        firstNumLabel1.setText("jLabel1");
+
+        secondNumLabel1.setText("jLabel3");
+
+        jLabel5.setText("Number 1");
+
+        jLabel15.setText("Number 2");
+
+        jLabel16.setText("Points:");
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel19.setText("Math Log");
+
+        hintButton1.setText("Hint");
+
+        resetButton1.setText("Reset");
+
+        shuffleButton1.setText("Shuffle");
+
+        helpButton1.setText("Help");
+
+        logTextArea1.setColumns(20);
+        logTextArea1.setRows(5);
+        jScrollPane2.setViewportView(logTextArea1);
+
+        quitButton1.setText("Quit");
+
+        pointsAmountLabel1.setText(" ");
+
+        javax.swing.GroupLayout twoPlayerPanelLayout = new javax.swing.GroupLayout(twoPlayerPanel);
+        twoPlayerPanel.setLayout(twoPlayerPanelLayout);
+        twoPlayerPanelLayout.setHorizontalGroup(
+            twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(twoPlayerPanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, twoPlayerPanelLayout.createSequentialGroup()
+                        .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(hintButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(shuffleButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(resetButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(helpButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(quitButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
+                        .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(firstNumLabel1))
+                        .addGap(54, 54, 54)
+                        .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(SubButt1)
+                                .addComponent(AddButt1)
+                                .addComponent(DivButt1))
+                            .addGroup(twoPlayerPanelLayout.createSequentialGroup()
+                                .addComponent(MultiButt1)
+                                .addGap(4, 4, 4)))
+                        .addGap(38, 38, 38)
+                        .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(secondNumLabel1)
+                            .addComponent(jLabel15))
+                        .addGap(31, 31, 31))
+                    .addGroup(twoPlayerPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(twoPlayerPanelLayout.createSequentialGroup()
+                                .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(NumButt5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(NumButt6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(67, 67, 67)
+                                .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(NumButt8, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(NumButt7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(67, 67, 67)
+                .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(twoPlayerPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pointsAmountLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel19)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        twoPlayerPanelLayout.setVerticalGroup(
+            twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, twoPlayerPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(pointsAmountLabel1))
+                .addGap(31, 31, 31)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(twoPlayerPanelLayout.createSequentialGroup()
+                        .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(NumButt5)
+                            .addComponent(NumButt7))
+                        .addGap(43, 43, 43)
+                        .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(NumButt6)
+                            .addComponent(NumButt8))
+                        .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(twoPlayerPanelLayout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(SubButt1)
+                                .addGap(15, 15, 15)
+                                .addComponent(DivButt1)
+                                .addGap(18, 18, 18)
+                                .addComponent(MultiButt1))
+                            .addGroup(twoPlayerPanelLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, twoPlayerPanelLayout.createSequentialGroup()
+                                        .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(twoPlayerPanelLayout.createSequentialGroup()
+                                                .addComponent(hintButton1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(resetButton1)
+                                                .addGap(12, 12, 12))
+                                            .addGroup(twoPlayerPanelLayout.createSequentialGroup()
+                                                .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                    .addComponent(AddButt1)
+                                                    .addComponent(jLabel15)
+                                                    .addComponent(jLabel5))
+                                                .addGap(29, 29, 29)))
+                                        .addGroup(twoPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(shuffleButton1)
+                                            .addComponent(firstNumLabel1))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(helpButton1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(quitButton1))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, twoPlayerPanelLayout.createSequentialGroup()
+                                        .addComponent(secondNumLabel1)
+                                        .addGap(75, 75, 75)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        mainPanel.add(twoPlayerPanel, "panelTwoPlayer");
+
+        compStartButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        compStartButton.setText("Play Competitive With a Friend");
+
+        coopStartButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        coopStartButton.setText("Play Co Op With a Friend");
+
+        javax.swing.GroupLayout twoplayerComporCoOpLayout = new javax.swing.GroupLayout(twoplayerComporCoOp);
+        twoplayerComporCoOp.setLayout(twoplayerComporCoOpLayout);
+        twoplayerComporCoOpLayout.setHorizontalGroup(
+            twoplayerComporCoOpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(twoplayerComporCoOpLayout.createSequentialGroup()
+                .addContainerGap(158, Short.MAX_VALUE)
+                .addComponent(compStartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(120, 120, 120)
+                .addComponent(coopStartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
+        );
+        twoplayerComporCoOpLayout.setVerticalGroup(
+            twoplayerComporCoOpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, twoplayerComporCoOpLayout.createSequentialGroup()
+                .addContainerGap(134, Short.MAX_VALUE)
+                .addGroup(twoplayerComporCoOpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(compStartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(coopStartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(205, 205, 205))
+        );
+
+        mainPanel.add(twoplayerComporCoOp, "panelTwoPlayerCoopofComp");
+
+        beServerRadioButton.setText("jRadioButton1");
+
+        connectToRadioButton.setText("jRadioButton2");
+
+        jLabel2.setText("Make a game for friends to connect to");
+
+        jLabel18.setText("Connect to friends game");
+
+        clientAddressTextField.setText("localhost");
+
+        twoPlayerQuitButt.setText("Quit");
+
+        startTwoPlayerButt.setText("Start");
+
+        jLabel25.setText("Address");
+
+        jLabel26.setText("Port");
+
+        addressToConnectToLabel.setText("jLabel28");
+
+        javax.swing.GroupLayout twoPlayerSettingPanelLayout = new javax.swing.GroupLayout(twoPlayerSettingPanel);
+        twoPlayerSettingPanel.setLayout(twoPlayerSettingPanelLayout);
+        twoPlayerSettingPanelLayout.setHorizontalGroup(
+            twoPlayerSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(twoPlayerSettingPanelLayout.createSequentialGroup()
+                .addGroup(twoPlayerSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, twoPlayerSettingPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(twoPlayerQuitButt, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39))
+                    .addGroup(twoPlayerSettingPanelLayout.createSequentialGroup()
+                        .addGap(207, 207, 207)
+                        .addGroup(twoPlayerSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(serverToConnectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(twoPlayerSettingPanelLayout.createSequentialGroup()
+                                .addGroup(twoPlayerSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(beServerRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(connectToRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                .addGap(59, 59, 59)
+                                .addGroup(twoPlayerSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(addressToConnectToLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47)))
+                .addGroup(twoPlayerSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(twoPlayerSettingPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(startTwoPlayerButt, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(twoPlayerSettingPanelLayout.createSequentialGroup()
+                        .addComponent(clientAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addGroup(twoPlayerSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(connectToPortTextField)
+                            .addComponent(serverPortTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(271, Short.MAX_VALUE))
+        );
+        twoPlayerSettingPanelLayout.setVerticalGroup(
+            twoPlayerSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(twoPlayerSettingPanelLayout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addGroup(twoPlayerSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel26))
+                .addGap(26, 26, 26)
+                .addGroup(twoPlayerSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(beServerRadioButton)
+                    .addComponent(jLabel2)
+                    .addComponent(serverPortTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(twoPlayerSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(connectToRadioButton)
+                    .addComponent(jLabel18)
+                    .addComponent(clientAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(connectToPortTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(65, 65, 65)
+                .addComponent(serverToConnectLabel)
+                .addGap(28, 28, 28)
+                .addComponent(addressToConnectToLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addGroup(twoPlayerSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(twoPlayerQuitButt)
+                    .addComponent(startTwoPlayerButt))
+                .addGap(28, 28, 28))
+        );
+
+        mainPanel.add(twoPlayerSettingPanel, "panelTwoPlayerOption");
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel20.setText("Welcome to Go For 24!");
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel21.setText("It seems this is your first time playing. Please enter your details below so we can get started!");
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel22.setText("Your Name");
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel23.setText("Grade");
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel24.setText("Teacher's Name");
+
+        firstUseQuitButton.setText("Quit");
+
+        startContinueButton.setText("Continue");
+
+        javax.swing.GroupLayout firstTimeUsePanelLayout = new javax.swing.GroupLayout(firstTimeUsePanel);
+        firstTimeUsePanel.setLayout(firstTimeUsePanelLayout);
+        firstTimeUsePanelLayout.setHorizontalGroup(
+            firstTimeUsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(firstTimeUsePanelLayout.createSequentialGroup()
+                .addGroup(firstTimeUsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(firstTimeUsePanelLayout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(firstTimeUsePanelLayout.createSequentialGroup()
+                        .addGap(319, 319, 319)
+                        .addComponent(jLabel20))
+                    .addGroup(firstTimeUsePanelLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addGroup(firstTimeUsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel24))
+                        .addGap(35, 35, 35)
+                        .addGroup(firstTimeUsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nameTextField)
+                            .addComponent(gradeTextField)
+                            .addComponent(teacherNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))
+                    .addGroup(firstTimeUsePanelLayout.createSequentialGroup()
+                        .addGap(328, 328, 328)
+                        .addComponent(firstUseQuitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90)
+                        .addComponent(startContinueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(119, Short.MAX_VALUE))
+        );
+        firstTimeUsePanelLayout.setVerticalGroup(
+            firstTimeUsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(firstTimeUsePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel21)
+                .addGap(66, 66, 66)
+                .addGroup(firstTimeUsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(firstTimeUsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(gradeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addGroup(firstTimeUsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(teacherNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGroup(firstTimeUsePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(firstUseQuitButton)
+                    .addComponent(startContinueButton))
+                .addContainerGap())
+        );
+
+        mainPanel.add(firstTimeUsePanel, "firstTimeUsePanel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 943, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -553,18 +967,25 @@ public class EntryGUI2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void singlePlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singlePlayerButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_singlePlayerButtonActionPerformed
+
     private void NumButt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumButt1ActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_NumButt1ActionPerformed
 
     private void AddButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AddButtActionPerformed
 
-    private void singlePlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singlePlayerButtonActionPerformed
+    private void AddButt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButt1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_singlePlayerButtonActionPerformed
+    }//GEN-LAST:event_AddButt1ActionPerformed
+
+    private void NumButt5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumButt5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NumButt5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -607,25 +1028,48 @@ public class EntryGUI2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JToggleButton AddButt;
+    public javax.swing.JToggleButton AddButt1;
     public javax.swing.JToggleButton DivButt;
+    public javax.swing.JToggleButton DivButt1;
     public javax.swing.JToggleButton MultiButt;
+    public javax.swing.JToggleButton MultiButt1;
     public javax.swing.JToggleButton NumButt1;
     public javax.swing.JToggleButton NumButt2;
     public javax.swing.JToggleButton NumButt3;
     public javax.swing.JToggleButton NumButt4;
+    public javax.swing.JToggleButton NumButt5;
+    public javax.swing.JToggleButton NumButt6;
+    public javax.swing.JToggleButton NumButt7;
+    public javax.swing.JToggleButton NumButt8;
     public javax.swing.JToggleButton SubButt;
+    public javax.swing.JToggleButton SubButt1;
+    public javax.swing.JLabel addressToConnectToLabel;
     public javax.swing.JLabel agentPhtotoLabel;
-    public javax.swing.JLabel agentTestMessage;
+    public javax.swing.JRadioButton beServerRadioButton;
     public javax.swing.JButton buttPlayAgain;
     public javax.swing.JButton buttQuit;
     public javax.swing.JButton buttonGoBack;
     public javax.swing.JButton buttonStartOptions;
+    public javax.swing.JToggleButton chaosModeButton;
+    public javax.swing.JTextField clientAddressTextField;
+    public javax.swing.JToggleButton compStartButton;
+    public javax.swing.JTextField connectToPortTextField;
+    public javax.swing.JRadioButton connectToRadioButton;
+    public javax.swing.JToggleButton coopStartButton;
     public javax.swing.JSlider difficultySlider;
+    public javax.swing.JPanel explanationPanel;
     public javax.swing.JLabel firstNumLabel;
+    public javax.swing.JLabel firstNumLabel1;
+    public javax.swing.JPanel firstTimeUsePanel;
+    public javax.swing.JToggleButton firstUseQuitButton;
+    public javax.swing.JPanel firstplayerPanel;
+    public javax.swing.JPanel firstplayersettingsPanel;
+    public javax.swing.JTextField gradeTextField;
     public javax.swing.JButton helpButton;
+    public javax.swing.JButton helpButton1;
+    public javax.swing.JLabel highScoreAmount;
     public javax.swing.JButton hintButton;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
+    public javax.swing.JButton hintButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -635,7 +1079,17 @@ public class EntryGUI2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -643,25 +1097,42 @@ public class EntryGUI2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    public javax.swing.JPanel jPanel1;
-    public javax.swing.JPanel jPanel2;
-    public javax.swing.JPanel jPanel3;
-    public javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     public java.awt.Label label1;
+    public java.awt.Label label2;
     public javax.swing.JTextArea leaderBoardTextArea;
     public javax.swing.JTextArea logTextArea;
+    public javax.swing.JTextArea logTextArea1;
     public javax.swing.JPanel mainPanel;
+    public javax.swing.JTextField nameTextField;
+    public javax.swing.JRadioButton noInteractionRadio;
+    public javax.swing.JRadioButton observingAgentRadio;
     public javax.swing.JLabel pointsAmountLabel;
+    public javax.swing.JLabel pointsAmountLabel1;
     public javax.swing.JButton quitButton;
+    public javax.swing.JButton quitButton1;
     public javax.swing.JButton resetButton;
+    public javax.swing.JButton resetButton1;
     public javax.swing.JLabel secondNumLabel;
+    public javax.swing.JLabel secondNumLabel1;
+    public javax.swing.JTextField serverPortTextField;
+    public javax.swing.JLabel serverToConnectLabel;
     public javax.swing.JButton shuffleButton;
+    public javax.swing.JButton shuffleButton1;
     public javax.swing.JButton singlePlayerButton;
+    public javax.swing.JToggleButton startContinueButton;
+    public javax.swing.JPanel startPanel;
+    public javax.swing.JToggleButton startTwoPlayerButt;
+    public javax.swing.JTextField teacherNameTextField;
+    public javax.swing.JButton twoPlayerButton;
+    public javax.swing.JPanel twoPlayerPanel;
+    public javax.swing.JToggleButton twoPlayerQuitButt;
+    public javax.swing.JPanel twoPlayerSettingPanel;
+    public javax.swing.JPanel twoplayerComporCoOp;
+    public javax.swing.JRadioButton watchAgentRadio;
+    public javax.swing.JPanel youwinPanel;
     // End of variables declaration//GEN-END:variables
 }
 

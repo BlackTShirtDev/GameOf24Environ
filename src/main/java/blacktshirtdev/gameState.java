@@ -10,27 +10,34 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.Stack;
-import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JToggleButton;
 import javax.swing.SwingUtilities;
+
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+//import javax.swing.Timer;
+
 
 /**
  *
@@ -38,20 +45,33 @@ import javax.swing.SwingUtilities;
  */
 public class gameState {
     
-    
     public static int A,B,C,D = 0;
     public static int ASafe,BSafe,CSafe,DSafe = 0;
     public static int ansCount = 0;
     public static int difficulty = 0;
     public static int points = 0;
+    public static int highScore = 0;
+    public static int resetCounter = 0;
+    public static int chaosCounter = 0;
+    public static String name = "";
+    public static String grade = "";
+    public static String teacher = "";
+    
+    public static HashMap<String, Integer> highScoresMap= new HashMap<String, Integer>();
+    
     
     public static String[] hints = new String[20];
     public static String[] displyHints = new String[3];
+    public static List expressions = new ArrayList();
     
     public static boolean addButtTog, SubButtTog, muliButtTog, divButtTog, numButt1,
             numButt2, numButt3, numButt4 = false;
     
     public static boolean ResetFlag = false;
+    public static boolean TwoPlayerFlag = false;
+    public static boolean coopFlag = false;
+    public static boolean compFlag = false;
+    public static boolean chaosFlag = false;
     
     public static Stack<Integer> buttPress = new Stack<Integer>(); //LOL
     public static Stack<JToggleButton> buttPressOrder = new Stack<JToggleButton>();
@@ -60,6 +80,7 @@ public class gameState {
 //    public static ButtonGroup num2ButtGroup = new ButtonGroup();
     public static ButtonGroup operButtGroup = new ButtonGroup();
     public static ButtonGroup hintButtGroup = new ButtonGroup();
+    public static ButtonGroup twoPlayerButtGroup = new ButtonGroup();
          
     public static Scanner scanner = new Scanner(System.in);
     
@@ -68,14 +89,142 @@ public class gameState {
     public static hintGUI hintGUI = new hintGUI();
     public static helpGUI helpGUI = new helpGUI();
     
-    public gameState() {
+    //Two Player Variables
+    public static ServerSocket ss=null;
+    public static Socket s=null;
+    public static DataInputStream din = null;
+    public static DataOutputStream dout = null;
+    public static BufferedReader br = null;
+    public static boolean twoPlayerFlag = false;
     
-        gui.setVisible(true);
+    //Files
+    public static String userDirectoryLog = System.getProperty("user.dir") + "//UserLog.txt";
+    public static File fileLog = new File(userDirectoryLog);
+    
+    //Timer
+    public static int delay = 1000;
+    public static Timer chaosTimer = null;
+    
+
+    public gameState(EntryGUI2 window, boolean isTwoPlayer, boolean isChaosMode) {
         
-        CardLayout card = (CardLayout) gui.mainPanel.getLayout();
-        card.show(gui.mainPanel, "panelStartMenu");
+        chaosFlag = isChaosMode;
         
-        //Math.random() * (max - min + 1) + min
+        String userDirectory = System.getProperty("user.dir") + "//UserSettings.txt";
+        File fileUser = new File(userDirectory);
+        
+        try {
+            Scanner scUser = new Scanner(fileUser);
+            if(scUser.hasNextLine()){
+                name = scUser.next();
+                scUser.nextLine();
+                grade = scUser.nextLine();
+                teacher = scUser.nextLine();
+            }   
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(gameState.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
+        String userDirectoryHighScore = System.getProperty("user.dir") + "//RecordedHighScores.txt";
+        File fileHighScores = new File(userDirectoryHighScore);
+        
+        if(!fileHighScores.exists()){
+            
+            if(!fileHighScores.canWrite())
+                fileHighScores.setWritable(true);
+            
+            try {
+                FileWriter fout = new FileWriter(fileHighScores, true);
+                
+                fout.write(" ");
+                fout.flush();
+                fout.close();
+                
+            } catch (IOException ex) {
+                Logger.getLogger(gameState.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            
+        }
+        
+        if(fileHighScores.exists() && fileHighScores.canRead()){
+        
+            try {
+                Scanner sc = new Scanner(fileHighScores);
+                sc.useDelimiter("\n");  
+                while(sc.hasNextLine()){
+                    String str = sc.nextLine();
+                    Scanner lineScanner = new Scanner(str);
+                    lineScanner.useDelimiter(" ");
+                    while(lineScanner.hasNext()){
+                        highScoresMap.put(lineScanner.next(), Integer.valueOf(lineScanner.next()));
+                    }
+                        
+                }
+                
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(gameState.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+            if (!highScoresMap.isEmpty() && highScoresMap != null){
+                highScore = highScoresMap.get(name);
+                gui.highScoreAmount.setText(name + " " + String.valueOf(highScore));
+            }
+                
+        }
+        
+        if(!fileLog.exists() && fileLog.canWrite()){
+            
+            try {
+                
+                FileWriter logWriter = new FileWriter(fileLog, true);
+                logWriter.write(name + " has started a new session at " + Calendar.getInstance().getTime().toString());
+            } catch (IOException ex) {
+                Logger.getLogger(gameState.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+        } else {
+            fileLog.setWritable(true);
+            
+            try {
+                
+                FileWriter logWriter = new FileWriter(fileLog, true);
+                logWriter.write(name + " has started a new session at " + Calendar.getInstance().getTime().toString());
+                logWriter.write("\n");
+                logWriter.flush();
+                logWriter.close();
+                
+            } catch (IOException ex) {
+                Logger.getLogger(gameState.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        gui = window;
+        
+        if (isTwoPlayer == false){
+        
+            CardLayout card = (CardLayout) gui.mainPanel.getLayout();
+            card.show(gui.mainPanel, "panelSinglePlayerOptions");
+    
+        } else if (isTwoPlayer == true){
+            
+            CardLayout card = (CardLayout) gui.mainPanel.getLayout();
+            card.show(gui.mainPanel, "panelTwoPlayerCoopofComp");
+            
+        }
+        
+        if (isChaosMode == false){
+        
+            CardLayout card = (CardLayout) gui.mainPanel.getLayout();
+            card.show(gui.mainPanel, "panelSinglePlayerOptions");
+        
+        } else if (isChaosMode == true){
+        
+            chaosMode();
+        }
         
         loadNumbersStart();
         
@@ -178,9 +327,31 @@ public class gameState {
                     
                     gui.logTextArea.setEditable(true);
                     
-                    gui.logTextArea.setText(gui.logTextArea.getText() + gui.firstNumLabel.getText() +" "+
+                    try {
+                        FileWriter logWriter = new FileWriter(fileLog, true);
+                        logWriter.write("Student Work: " + gui.firstNumLabel.getText() + " " + operator + " " + gui.secondNumLabel.getText() + " = " + String.valueOf(userCalculation(buttPress, operator)) + " Time: " + Calendar.getInstance().getTime().toString() + " , Relevant Solutions: " );
+                        
+                        expressions.forEach((exp) -> {
+                            
+                            if(exp.toString().contains(gui.firstNumLabel.getText() + " " + operator + " " + gui.secondNumLabel.getText())){
+                                try {
+                                    logWriter.write(exp.toString());
+                                    logWriter.write("\n");
+                                } catch (IOException ex) {
+                                    Logger.getLogger(gameState.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                        });
+                        
+                        logWriter.flush();
+                        logWriter.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(gameState.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    gui.logTextArea.setText(gui.firstNumLabel.getText() + " " + operator +" "+
                              gui.secondNumLabel.getText() + 
-                            " = " + String.valueOf(userCalculation(buttPress, operator)));
+                            " = " + String.valueOf(userCalculation(buttPress, operator)) + "\r\n" + gui.logTextArea.getText());
                     
                     gui.logTextArea.setText(gui.logTextArea.getText() + "\r\n");
                     
@@ -221,21 +392,22 @@ public class gameState {
 
             @Override
             public void itemStateChanged(ItemEvent e) {
-                SwingUtilities.invokeLater( new Runnable(){
-                    @Override
-                    public void run() {
-                        checkForWin();
-                    }
+                SwingUtilities.invokeLater(gameState::checkForWin);
+                try{
+                    FileWriter logWriter = new FileWriter(fileLog, true);
+                    logWriter.write(name + " has created 24 from the give numbers, Score: " + gui.pointsAmountLabel.getText());
+                } catch(IOException exc){
                 
-                });
-                
+                }
             }
                
         }
         
        difficulty = gui.difficultySlider.getValue() / 10;
        
-       gui.pointsAmountLabel.setText("0");
+       if(isChaosMode == false)
+            gui.pointsAmountLabel.setText("0");
+       
        
        hintButtGroup.add(hintGUI.hint1Button);
        hintButtGroup.add(hintGUI.hint2Button);
@@ -257,44 +429,193 @@ public class gameState {
        gui.MultiButt.addItemListener(new checkForTheWin());
        
        
-       gui.singlePlayerButton.addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e){
-               
-               gotoSinglePlayerOptions();
-           }
-       });
        
-       gui.buttonStartOptions.addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e){
-               //Change Panel to single player game
-               gotoSinglePlayerGame();
-               loadNumbersStart();
-           }
-       });
        
-       gui.buttonGoBack.addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
+       //Two Player button
+       
+       twoPlayerButtGroup.add(gui.connectToRadioButton);
+       twoPlayerButtGroup.add(gui.beServerRadioButton);
+       
+       gui.startTwoPlayerButt.addActionListener((ActionEvent e) -> {
+           twoPlayerFlag = true;
+            try {
+                if (gui.beServerRadioButton.isSelected() == true && !gui.serverPortTextField.getText().equalsIgnoreCase("")) {
+                    //This instance will be a server
+                    
+                    String port = gui.serverPortTextField.getText();
+                    int portNum = Integer.valueOf(port);
+                    gui.addressToConnectToLabel.setText("Tell friend to connect to address " + ss.getInetAddress() +
+                            " and port number " + port);
+                    ss = new ServerSocket(portNum);
+                    s  = ss.accept();
+                    
+                    
+                    DataInputStream din1 = new DataInputStream(s.getInputStream());
+                    DataOutputStream dout1 = new DataOutputStream(s.getOutputStream());
+                    BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));
+                    twoPlayerFlag = true;
+                    CardLayout card = (CardLayout) gui.mainPanel.getLayout();
+                    //card.show(gui.mainPanel, "panelTwoPlayer");
+                    card.show(gui.mainPanel, "panelSinglePlayer");
+                    String str ="", str2 = "";
+                    str = gui.NumButt1.getText();
+                    dout1.writeUTF(str);
+                    dout1.flush();
+                    str = gui.NumButt2.getText();
+                    dout1.writeUTF(str);
+                    dout1.flush();
+                    str = gui.NumButt3.getText();
+                    dout1.writeUTF(str);
+                    dout1.flush();
+                    str = gui.NumButt4.getText();
+                    dout1.writeUTF(str);
+                    dout1.flush();
+                    str = name;
+                    dout1.writeUTF(str);
+                    dout1.flush();
+                    str = String.valueOf(highScore);
+                    dout1.writeUTF(str);
+                    dout1.flush();
+                    str = "stop";
+                    dout1.writeUTF(str);
+                    dout1.flush();
+                } else if (gui.connectToRadioButton.isSelected() == true && !gui.connectToPortTextField.getText().equalsIgnoreCase("")) {
+                    //This instance will be a client
+                    String port = gui.connectToPortTextField.getText();
+                    int portNum = Integer.valueOf(port);
+                    Socket s1 = new Socket("localhost",portNum);
+                    DataInputStream din2 = new DataInputStream(s1.getInputStream());
+                    DataOutputStream dout2 = new DataOutputStream(s1.getOutputStream());
+                    BufferedReader br2 = new BufferedReader(new InputStreamReader(System.in));
+                    twoPlayerFlag = true;
+                    CardLayout card = (CardLayout) gui.mainPanel.getLayout();
+                    //card.show(gui.mainPanel, "panelTwoPlayer");
+                    card.show(gui.mainPanel, "panelSinglePlayer");
+                    String str = "";
+                    while (!str.equals("stop")) {
+                        for (int i = 0; i < 5; i++) {
+                            if (i == 0) {
+                                str = din2.readUTF();
+                                gui.NumButt1.setText(str);
+                                ASafe = Integer.valueOf(str);
+                            }
+                            if (i == 1) {
+                                str = din2.readUTF();
+                                gui.NumButt2.setText(str);
+                                BSafe = Integer.valueOf(str);
+                            }
+                            if (i == 2) {
+                                str = din2.readUTF();
+                                gui.NumButt3.setText(str);
+                                CSafe = Integer.valueOf(str);
+                            }
+                            if (i == 3) {
+                                str = din2.readUTF();
+                                gui.NumButt4.setText(str);
+                                DSafe = Integer.valueOf(str);
+                            }
+                            if (i == 4) {
+                                str = din2.readUTF();
+                                //gui.NumButt4.setText(str);
+                            }
+                        }
+                        highScoresMap.put(din2.readUTF(), Integer.valueOf(din2.readUTF()));                    
+                    }
+                }
+            }catch(IOException ex){
+                System.out.println(ex.toString());
+            }
+            highScoresMap.forEach((key, value) -> {
+                String userDirectoryHighScore1 = System.getProperty("user.dir") + "//RecordedHighScores.txt";
+                File fileHighScores1 = new File(userDirectoryHighScore1);
+                FileWriter fout;
+                try {
+                    fout = new FileWriter(fileHighScores1);
+                    fout.write(key + " "+ value);
+                }catch (IOException ex) {
+                    Logger.getLogger(gameState.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+        });
+       
+       gui.twoPlayerQuitButt.addActionListener((ActionEvent e) -> {
+           goBackToMainPanel();
+        });
+       
+       
+       gui.compStartButton.addActionListener((ActionEvent e) -> {
+           CardLayout card = (CardLayout) gui.mainPanel.getLayout();
+           //card.show(gui.mainPanel, "panelTwoPlayer");
+           card.show(gui.mainPanel, "panelTwoPlayerOption");
            
-               goBackToMainPanel();
-           }
-       });
+           compFlag = true;
+        });
        
-       gui.quitButton.addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
+       gui.coopStartButton.addActionListener((ActionEvent e) -> {
+           CardLayout card = (CardLayout) gui.mainPanel.getLayout();
+           //card.show(gui.mainPanel, "panelTwoPlayer");
+           card.show(gui.mainPanel, "panelTwoPlayerOption");
            
-               goBackToMainPanel();
-           }
-       });
+           coopFlag = true;
+        });
        
-       gui.resetButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
+       
+       
+       
+       
+       //Single Player Buttons
+       
+       gui.singlePlayerButton.addActionListener((ActionEvent e) -> {
+           gotoSinglePlayerOptions();
+        });
+       
+       gui.buttonStartOptions.addActionListener((ActionEvent e) -> {
+           //Change Panel to single player game
+           gotoSinglePlayerGame();
+           loadNumbersStart();
+           
+            try {
+                FileWriter logWriter = new FileWriter(fileLog, true);
+                logWriter.write("Game Start: Numbers at start: " + String.valueOf(ASafe) + " " + String.valueOf(BSafe) + " "
+                    + String.valueOf(CSafe) + " " + String.valueOf(DSafe) +"," + " Difficulty: " + String.valueOf(difficulty)
+                    + "," + "Points: " + gui.pointsAmountLabel.getText() + "," + "Solution Expressions: " );
+                logWriter.write("\n");
                 
-                resetGame();
+                expressions.forEach((express) -> {
+                    
+                    try {
+                        logWriter.write(express.toString());
+                        logWriter.write("\n");
+                    } catch (IOException ex) {
+                        Logger.getLogger(gameState.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                
+                });
+                
+                logWriter.flush();
+                logWriter.close();
+            } catch (IOException ex) {
+                Logger.getLogger(gameState.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+       
+       gui.buttonGoBack.addActionListener((ActionEvent e) -> {
+           goBackToMainPanel();
+        });
+       
+       gui.quitButton.addActionListener((ActionEvent e) -> {
+           goBackToMainPanel();
+        });
+       
+       gui.resetButton.addActionListener((ActionEvent e) -> {
+           resetGame();
+           resetCounter++;
+           try {
+                FileWriter logWriter = new FileWriter(fileLog,  true);
+                logWriter.write(name + " reset the numbers to original state, Numer of current resets: " + String.valueOf(resetCounter));
+                logWriter.write("\n");
+            } catch (IOException ex) {
+                Logger.getLogger(gameState.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
        
@@ -308,112 +629,59 @@ public class gameState {
        
        });
        
-       gui.buttQuit.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               
-                goBackToMainPanel();
-            
-            }
-       
-       });
-       
-       gui.buttPlayAgain.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               
-                CardLayout card = (CardLayout) gui.mainPanel.getLayout();
-                card.show(gui.mainPanel, "panelSinglePlayer"); 
-                
-                shuffleNumbers();
-            
-            }
-       });
-       
-       gui.hintButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            //Launch hint JFrame to display small hint   
-                hintGUI.setVisible(true);
-                
-                hintGUI.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                
-                getHintText();
-                
-                hintGUI.hintTextArea.setText(displyHints[0]);
-                hintGUI.hint1Button.setEnabled(true);
-                    
-            }
-       });
-       
-       hintGUI.hintOKButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            
-                hintGUI.setVisible(false);
-                hintGUI.hintTextArea.setText("");
-                
-            }
-       });
-       
-       hintGUI.hint1Button.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-           
-                hintGUI.hintTextArea.setText(displyHints[0]);
-            }
-
-       });
-       
-        hintGUI.hint2Button.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-           
-                hintGUI.hintTextArea.setText(displyHints[1]);
-            }
-                
-       });
-        
-        hintGUI.hint3Button.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-           
-                hintGUI.hintTextArea.setText(displyHints[2]);
-            }
-
-       });
-        
-        gui.helpButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               helpGUI.setVisible(true);
-               helpGUI.helpTextArea.setEditable(false);
-               helpGUI.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-            }
-        });
-        
-        helpGUI.okayHintButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) { 
-            
-               helpGUI.setVisible(false);
-            
-            }
+       gui.buttQuit.addActionListener((ActionEvent e) -> {
+           goBackToMainPanel();
         });
        
-    }
-    
-    //Agent Methods
-    
-    public static void AtoSmessage(String message){
-    
-        gui.agentTestMessage.setText(message);
+       gui.buttPlayAgain.addActionListener((ActionEvent e) -> {
+           CardLayout card = (CardLayout) gui.mainPanel.getLayout();
+           card.show(gui.mainPanel, "panelSinglePlayer");
+           
+           shuffleNumbers();
+        });
+       
+       gui.hintButton.addActionListener((ActionEvent e) -> {
+           //Launch hint JFrame to display small hint
+           hintGUI.setVisible(true);
+           
+           hintGUI.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+           
+           getHintText();
+           
+           hintGUI.hintTextArea.setText(displyHints[0]);
+           hintGUI.hint1Button.setEnabled(true);
+        });
+       
+       hintGUI.hintOKButton.addActionListener((ActionEvent e) -> {
+           hintGUI.setVisible(false);
+           hintGUI.hintTextArea.setText("");
+        });
+       
+       hintGUI.hint1Button.addActionListener((ActionEvent e) -> {
+           hintGUI.hintTextArea.setText(displyHints[0]);
+        });
+       
+        hintGUI.hint2Button.addActionListener((ActionEvent e) -> {
+            hintGUI.hintTextArea.setText(displyHints[1]);
+        });
         
+        hintGUI.hint3Button.addActionListener((ActionEvent e) -> {
+            hintGUI.hintTextArea.setText(displyHints[2]);
+        });
+        
+        gui.helpButton.addActionListener((ActionEvent e) -> {
+            helpGUI.setVisible(true);
+            helpGUI.helpTextArea.setEditable(false);
+            helpGUI.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        });
+        
+        helpGUI.okayHintButton.addActionListener((ActionEvent e) -> {
+            helpGUI.setVisible(false);
+        });
+        
+        
+       
     }
-    
-    
-    
-    //End Methods
     
     public static void getHintText(){
     
@@ -422,18 +690,12 @@ public class gameState {
         String hint3 = "";
         
         
-        for(int i = 0; i < hints.length; i++){
-        
-            if(hints[i].contains("(")){
-                
+        for (String hint : hints) {
+            if (hint.contains("(")) {
                 hint1 = "Try multiplying or dividing to make a small product";
-                
                 hint2 = "Working backwards might help";
-                
                 hint3 = "Try starting with this \n";
-            
-                hint3 = hint3 + " " + hints[i].substring(hints[i].indexOf("("), hints[i].indexOf(")") + 1);
-                      
+                hint3 = hint3 + " " + hint.substring(hint.indexOf("("), hint.indexOf(")") + 1);
             } else {
                 //hint1 = hints[0];
             }
@@ -443,6 +705,32 @@ public class gameState {
         displyHints[1] = hint2;
         displyHints[2] = hint3;
 
+    }
+    
+    //Chaos Mode Option On
+    
+    public static void chaosMode(){
+    
+           CardLayout card = (CardLayout) gui.mainPanel.getLayout();
+           card.show(gui.mainPanel, "panelSinglePlayerOptions");
+            
+           gui.pointsAmountLabel.setText("1000");
+           
+           
+           TimerTask task = new TimerTask() {
+               @Override
+               public void run() {
+                   int amount = Integer.valueOf(gui.pointsAmountLabel.getText());
+                   int amount2 = amount - 1;
+                   gui.pointsAmountLabel.setText(String.valueOf(amount2));
+                   System.out.println(String.valueOf(amount2));
+               }
+           };
+
+           chaosTimer = new Timer("Chaos");
+           
+           chaosTimer.schedule(task, 1, 1000);
+    
     }
     
     public static void checkForWin(){
@@ -473,19 +761,32 @@ public class gameState {
     
     public static void displayWin(){
         
-        points = points + 500;
+        if(chaosFlag == false){
+            points = points + 500;
+        } else if(chaosFlag == true){
+            chaosCounter++;
+            points = Integer.valueOf(gui.pointsAmountLabel.getText()) + points;
+            points = points + (chaosCounter * 100);
+            
+        }
+        
+        
+        
+        highScore = highScore + points;
         
         gui.pointsAmountLabel.setText(String.valueOf(points));
     
         CardLayout card = (CardLayout) gui.mainPanel.getLayout();
         card.show(gui.mainPanel, "panelWinning"); 
+        
+        gui.highScoreAmount.setText(String.valueOf(highScore + points));
     
     }
     
     
     public static List<Integer> getNumbers(){
     
-        List<Integer> numbers = new ArrayList<Integer>();
+        List<Integer> numbers = new ArrayList<>();
         
         numbers.add(Integer.parseInt(gui.NumButt1.getText()));
         numbers.add(Integer.parseInt(gui.NumButt2.getText()));
@@ -494,6 +795,27 @@ public class gameState {
         
         return numbers;
     
+    }
+    
+    public static String getAgentControl(){
+        
+        String result = "";
+    
+        if (gui.noInteractionRadio.isEnabled()){
+            
+            result = "noInteract";
+        
+        } else if (gui.observingAgentRadio.isEnabled()){
+        
+            result = "observing";
+        
+        } else if (gui.watchAgentRadio.isEnabled()){
+        
+            result = "studentWatches";
+        
+        }
+    
+        return result;
     }
     
     public static void shuffleNumbers(){
@@ -518,16 +840,8 @@ public class gameState {
             }
             getNewNumbers();
             System.out.println("New Random Numbers Produced");
-        
-            for (Expression exp : getExpressions(Arrays.asList(A, B, C, D))){
-                if (exp.evaluate() == 24) {
-                    System.out.println(exp); 
-                    hints[ansCount] = exp.toString();
-                    ansCount += 1;
-                    //gui.label1.setText(String.valueOf(ansCount)); ;
-                }
-            }
                          
+            ansCount = makeSolutions(A, B, C, D);
         }
         
         gui.NumButt1.setLabel(String.valueOf(A));
@@ -571,14 +885,27 @@ public class gameState {
     
     static void getNewNumbers(){
     
-        A = (int) (Math.random() * (13 - 1 + 1) + 1);
-        B = (int) (Math.random() * (13 - 1 + 1) + 1);
-        C = (int) (Math.random() * (13 - 1 + 1) + 1);
-        D = (int) (Math.random() * (13 - 1 + 1) + 1);
-        ASafe = A;
-        BSafe = B;
-        CSafe = C;
-        DSafe = D;
+        if(Math.random() > 0.9){
+            while((A == B) || (B == C) || (C == D) || (D == A) || (C == A) || (B == D)){
+                A = (int) (Math.random() * (13 - 1 + 1) + 1);
+                B = (int) (Math.random() * (13 - 1 + 1) + 1);
+                C = (int) (Math.random() * (13 - 1 + 1) + 1);
+                D = (int) (Math.random() * (13 - 1 + 1) + 1);
+                ASafe = A;
+                BSafe = B;
+                CSafe = C;
+                DSafe = D;
+            }    
+        } else {
+            A = (int) (Math.random() * (13 - 1 + 1) + 1);
+            B = (int) (Math.random() * (13 - 1 + 1) + 1);
+            C = (int) (Math.random() * (13 - 1 + 1) + 1);
+            D = (int) (Math.random() * (13 - 1 + 1) + 1);
+            ASafe = A;
+            BSafe = B;
+            CSafe = C;
+            DSafe = D;
+        }
     
     }
     
@@ -613,25 +940,25 @@ public class gameState {
         int num2 = numStack.elementAt(1); //Chosen second
         int answer = 0;
         
-        if (oper.equals("Add")){
+        if (oper.equals("+")){
         
             answer = num2 + num1;
             refreshLabels("+");
         
         }
-        if (oper.equals("Sub")){
+        if (oper.equals("-")){
         
             answer = num1 - num2;
             refreshLabels("-");
             
         }
-        if (oper.equals("Multi")){
+        if (oper.equals("*")){
         
             answer = num2 * num1;
             refreshLabels("*");
             
         }
-        if (oper.equals("Divide")){
+        if (oper.equals("/")){
         
             answer = num1 / num2;
             refreshLabels("/");
@@ -706,8 +1033,27 @@ public class gameState {
     
     static void goBackToMainPanel(){
     
-        CardLayout card = (CardLayout) gui.mainPanel.getLayout();
-        card.show(gui.mainPanel, "panelStartMenu");
+       
+            CardLayout card = (CardLayout) gui.mainPanel.getLayout();
+            card.show(gui.mainPanel, "panelStartMenu");
+            
+        try {
+            if (ss != null){
+                ss.close();
+            }
+            if (s != null){
+                s.close();
+            }
+            if (din != null){
+                din.close();
+            }
+            if (dout != null){
+                dout.close();
+            }
+            twoPlayerFlag = false;
+        } catch (IOException ex) {
+            Logger.getLogger(gameState.class.getName()).log(Level.SEVERE, null, ex);
+        }
     
     }
     
@@ -716,260 +1062,110 @@ public class gameState {
         System.exit(0);
     }
     
+    public static int makeSolutions(int ATemp, int BTemp, int CTemp, int DTemp){
+
+        
+        int[] operands = {ATemp, BTemp, CTemp, DTemp};
+        
+        int count = 0;
+        
+        expressions = new ArrayList();
+
+        char[] operations = new char[] { '+', '-', '*', '/' };
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                for (int k = 0; k < 4; k++) {
+                    
+                    String exp = operands[0] +" "+ operations[i] +" "+ operands[1] +" "+ operations[j]
+                            +" "+ operands[2] +" "+ operations[k] +" "+ operands[3];
+                    
+                    //String res = engine.eval(exp).toString();
+                    String res = DijkstraTwoStack(exp);
+                    
+                    if (Double.valueOf(res).intValue() == 24) {
+                        System.out.println(exp);
+                        expressions.add(exp);
+                        count ++;
+                        //return true;
+                    }
+                }
+            }
+        }
+        
+        return count;
     
-    static Set<Expression> getExpressions(Collection<Integer> numbers) {
-    Set<Expression> expressions = new HashSet<Expression>();
-    if (numbers.size() == 1) {
-      expressions.add(new ConstantExpression(numbers.iterator().next()));
-      return expressions;
     }
     
-      for (Collection<Collection<Integer>> grouping : getGroupings(numbers))
-      if (grouping.size() > 1)
-        expressions.addAll(getExpressionsForGrouping(grouping));
-      return expressions;
+    private static void permutation(String str){
+        permutation("", str);
     }
     
-    static Set<Expression> getExpressionsForGrouping(Collection<Collection<Integer>> groupedNumbers) {
-    Collection<Set<Expression>> groupExpressionOptions = new ArrayList<Set<Expression>>();
-    for (Collection<Integer> group : groupedNumbers)
-      groupExpressionOptions.add(getExpressions(group));
-
-    Set<Expression> result = new HashSet<Expression>();
-    for (Collection<Expression> expressions : getCombinations(groupExpressionOptions)) {
-      boolean containsAdditive = false, containsMultiplicative = false;
-      for (Expression exp : expressions) {
-        containsAdditive |= exp instanceof AdditiveExpression;
-        containsMultiplicative |= exp instanceof MultiplicativeExpression;
-      }
-
-      Expression firstExpression = expressions.iterator().next();
-      Collection<Expression> restExpressions = new ArrayList<Expression>(expressions);
-      restExpressions.remove(firstExpression);
-
-      for (int i = 0; i < 1 << restExpressions.size(); ++i) {
-        Iterator<Expression> restExpressionsIter = restExpressions.iterator();
-        Collection<Expression> a = new ArrayList<Expression>(), b = new ArrayList<Expression>();
-        for (int j = 0; j < restExpressions.size(); ++j)
-          Arrays.asList(a, b).get(i >> j & 1).add(restExpressionsIter.next());
-        if (!containsAdditive)
-          result.add(new AdditiveExpression(firstExpression, a, b));
-        if (!containsMultiplicative)
-          try {
-            result.add(new MultiplicativeExpression(firstExpression, a, b));
-          } catch (ArithmeticException e) {}
-      }
+    private static void permutation(String prefix, String str){
+         int n = str.length();
+        if (n == 0) System.out.println(prefix);
+        else {
+            for (int i = 0; i < n; i++)
+                permutation(prefix + str.charAt(i), str.substring(0, i) + str.substring(i+1, n));
+        }
     }
-    return result;
-  }
-     
+    
+    private static String DijkstraTwoStack(String scanner){
+    
+        //Scanner scanner = new Scanner(System.in);
+        String exp[] = scanner.split(" ");
+        
+        Stack<String> ops = new Stack<>();
+        Stack<Double> vals = new Stack<>();
 
-  // Sample input/output:
-  // [ {a,b} ]               -> { [a], [b] }
-  // [ {a,b}, {a} ]          -> { [a,b], [a,a] }
-  // [ {a,b,c}, {d}, {e,f} ] -> { [a,d,e], [a,d,f], [b,d,e], [b,d,f], [c,d, e], [c,d,f] }
-  static <T> Set<Collection<T>> getCombinations(Collection<Set<T>> collectionOfOptions) {
-    if (collectionOfOptions.isEmpty())
-      return new HashSet<Collection<T>>() {{ add(new ArrayList<T>()); }};
-
-    Set<T> firstOptions = collectionOfOptions.iterator().next();
-    Collection<Set<T>> restCollectionOfOptions = new ArrayList<Set<T>>(collectionOfOptions);
-    restCollectionOfOptions.remove(firstOptions);
-
-    Set<Collection<T>> result = new HashSet<Collection<T>>();
-    for (T first : firstOptions)
-      for (Collection<T> restCombination : getCombinations(restCollectionOfOptions))
-        result.add(Util.concat(restCombination, first));
-    return result;
-  }
-
-  static <T> Set<Collection<Collection<T>>> getGroupings(final Collection<T> values) {
-    Set<Collection<Collection<T>>> result = new HashSet<Collection<Collection<T>>>();
-    if (values.isEmpty()) {
-      result.add(new ArrayList<Collection<T>>());
-      return result;
+        for (String Field : exp) {
+            switch (Field) {
+                case "(":
+                    break;
+                case "+":
+                case "*":
+                case "/":
+                case "-":
+                    ops.push(Field);
+                    break;
+                case ")":
+                    getComp(ops, vals);
+                    break;
+                default:
+                    vals.push(Double.parseDouble(Field));
+                    break;
+            }
+            
+            if(vals.size() == 2 && ops.size() == 1){
+                getComp(ops, vals);
+            }
+        }
+        //getComp(ops, vals);
+        //System.out.println(vals.pop());
+        return String.valueOf(vals.pop());
+    
     }
-
-    for (Collection<T> firstGroup : getSubcollections(values)) {
-      if (firstGroup.size() == 0)
-        continue;
-
-      Collection<T> rest = new ArrayList<T>(values);
-      for (T value : firstGroup)
-        rest.remove(value);
-
-      for (Collection<Collection<T>> restGrouping : getGroupings(rest)) {
-        result.add(Util.concat(restGrouping, firstGroup));
-      }
+    
+    private static void getComp(Stack<String> ops, Stack<Double> vals) {
+        String op = ops.pop();
+        switch (op) {
+            case "+":
+                vals.push(vals.pop() + vals.pop());
+                break;
+            case "*":
+                vals.push(vals.pop() * vals.pop());
+                break;
+            case "-":
+                double sub = vals.pop();
+                vals.push(vals.pop() - sub);
+                break;
+            case "/":
+                double divisor = vals.pop();
+                vals.push(vals.pop() / divisor);
+                break;
+            default:
+                break;
+        }
     }
-    return result;
-  }
-
-  static <T> Set<Collection<T>> getSubcollections(final Collection<T> values) {
-    if (values.isEmpty())
-      return new HashSet<Collection<T>>() {{ add(values); }};
-
-    T first = values.iterator().next();
-    Collection<T> rest = new ArrayList<T>(values);
-    rest.remove(first);
-
-    Set<Collection<T>> result = new HashSet<Collection<T>>();
-    for (Collection<T> subcollection : getSubcollections(rest)) {
-      result.add(subcollection);
-      result.add(Util.concat(subcollection, first));
-    }
-    return result;
-  }
-}
-
-abstract class Expression {
-  abstract double evaluate();
-
-  @Override
-  public abstract boolean equals(Object o);
-
-  @Override
-  public int hashCode() {
-    return new Double(evaluate()).hashCode();
-  }
-
-  @Override
-  public abstract String toString();
-}
-
-abstract class AggregateExpression extends Expression {}
-
-class AdditiveExpression extends AggregateExpression {
-  final Expression firstOperand;
-  final Collection<Expression> addOperands;
-  final Collection<Expression> subOperands;
-
-  AdditiveExpression(Expression firstOperand, Collection<Expression> addOperands,
-                     Collection<Expression> subOperands) {
-    this.firstOperand = firstOperand;
-    this.addOperands = addOperands;
-    this.subOperands = subOperands;
-  }
-
-  @Override
-  double evaluate() {
-    double result = firstOperand.evaluate();
-    for (Expression exp : addOperands)
-      result += exp.evaluate();
-    for (Expression exp : subOperands)
-      result -= exp.evaluate();
-    return result;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (o instanceof AdditiveExpression) {
-      AdditiveExpression that = (AdditiveExpression) o;
-      return Util.equalsIgnoreOrder(Util.concat(this.addOperands, this.firstOperand),
-                                    Util.concat(that.addOperands, that.firstOperand))
-          && Util.equalsIgnoreOrder(this.subOperands, that.subOperands);
-    }
-    return false;
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder(firstOperand.toString());
-    for (Expression exp : addOperands)
-      sb.append('+').append(exp);
-    for (Expression exp : subOperands)
-      sb.append('-').append(exp);
-    return sb.toString();
-  }
-}
-
-class MultiplicativeExpression extends AggregateExpression {
-  final Expression firstOperand;
-  final Collection<Expression> mulOperands;
-  final Collection<Expression> divOperands;
-
-  MultiplicativeExpression(Expression firstOperand, Collection<Expression> mulOperands,
-                           Collection<Expression> divOperands) {
-    this.firstOperand = firstOperand;
-    this.mulOperands = mulOperands;
-    this.divOperands = divOperands;
-    for (Expression exp : divOperands)
-      if (exp.evaluate() == 0.0)
-        throw new ArithmeticException();
-  }
-
-  @Override
-  double evaluate() {
-    double result = firstOperand.evaluate();
-    for (Expression exp : mulOperands)
-      result *= exp.evaluate();
-    for (Expression exp : divOperands)
-      result /= exp.evaluate();
-    return result;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (o instanceof MultiplicativeExpression) {
-      MultiplicativeExpression that = (MultiplicativeExpression) o;
-      return Util.equalsIgnoreOrder(Util.concat(this.mulOperands, this.firstOperand),
-                                    Util.concat(that.mulOperands, that.firstOperand))
-          && Util.equalsIgnoreOrder(this.divOperands, that.divOperands);
-    }
-    return false;
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder(maybeAddParens(firstOperand));
-    for (Expression exp : mulOperands)
-      sb.append('*').append(maybeAddParens(exp));
-    for (Expression exp : divOperands)
-      sb.append('/').append(maybeAddParens(exp));
-    return sb.toString();
-  }
-
-  static String maybeAddParens(Expression exp) {
-    return String.format(exp instanceof AdditiveExpression ? "(%s)" : "%s", exp);
-  }
-}
-
-class ConstantExpression extends Expression {
-  final int value;
-
-  ConstantExpression(int value) {
-    this.value = value;
-  }
-
-  @Override
-  double evaluate() {
-    return value;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    return o instanceof ConstantExpression && value == ((ConstantExpression) o).value;
-  }
-
-  @Override
-  public String toString() {
-    return Integer.toString(value);
-  }
-}
-
-class Util {
-  static <T> boolean equalsIgnoreOrder(Collection<T> a, Collection<T> b) {
-    Map<T, Integer> aCounts = new HashMap<T, Integer>(), bCounts = new HashMap<T, Integer>();
-    for (T value : a) aCounts.put(value, (aCounts.containsKey(value) ? aCounts.get(value) : 0) + 1);
-    for (T value : b) bCounts.put(value, (bCounts.containsKey(value) ? bCounts.get(value) : 0) + 1);
-    return aCounts.equals(bCounts);
-  }
-
-  static <T> Collection<T> concat(Collection<T> xs, final T x) {
-    List<T> result = new ArrayList<T>(xs);
-    result.add(x);
-    return result;
-  }
 }
 
     

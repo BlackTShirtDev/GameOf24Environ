@@ -13,14 +13,9 @@ import eis.exceptions.ManagementException;
 import eis.iilang.Action;
 import eis.iilang.EnvironmentState;
 import eis.iilang.Parameter;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -30,6 +25,7 @@ public class twentyfourei extends AbstractEnvironment{
     
     private gameState game = null;
     
+    @Override
     public void init(Map<String, Parameter> parameters) throws ManagementException{
     
   
@@ -42,6 +38,7 @@ public class twentyfourei extends AbstractEnvironment{
         }
     }
     
+    @Override
     public void reset(Map<String, Parameter> parameters) throws ManagementException {
        
         List start = new ArrayList();
@@ -62,7 +59,7 @@ public class twentyfourei extends AbstractEnvironment{
         if(this.game == null){
         
             
-              this.game = new gameState();
+              //this.game = new gameState();
                 
 //            this.game.addWindowListener(new WindowAdapter(){
 //            
@@ -103,7 +100,7 @@ public class twentyfourei extends AbstractEnvironment{
     
     protected boolean isSupportedByEnvironment(Action action)
       {
-        if ((action.getName().equals("add")) && (action.getParameters().size() == 2))
+        if ((action.getName().equals("AtoSmessage")) )
           return true;
         
         return false;
