@@ -231,3 +231,38 @@ Game Start: Numbers at start: 6 4 2 2, Difficulty: 5,Points: 0,Solution Expressi
 6 * 4 - 2 + 2
 6 * 4 * 2 / 2
 6 * 4 / 2 * 2
+Logan has started a new session at Mon Dec 13 03:56:13 CST 2021
+Logan has started a new session at Mon Dec 13 03:56:31 CST 2021
+Logan has started a new session at Mon Dec 13 03:57:53 CST 2021
+Logan has started a new session at Mon Dec 13 03:59:33 CST 2021
+Logan has started a new session at Mon Dec 13 04:00:07 CST 2021
+Logan has started a new session at Mon Dec 13 05:05:59 CST 2021
+Game Start: Numbers at start: 4 6 12 12, Difficulty: 5,Points: 0,Solution Expressions: 
+4 * 6 + 12 - 12
+4 * 6 - 12 + 12
+4 * 6 * 12 / 12
+4 * 6 / 12 * 12
+4 / 6 + 12 + 12
+Logan has started a new session at Mon Dec 13 05:06:09 CST 2021
+Logan has started a new session at Mon Dec 13 05:07:15 CST 2021
+Logan has started a new session at Mon Dec 13 05:08:10 CST 2021
+Logan has started a new session at Mon Dec 13 05:08:30 CST 2021
+Logan has started a new session at Mon Dec 13 05:08:40 CST 2021
+Logan has started a new session at Mon Dec 13 05:11:18 CST 2021
+Logan has started a new session at Mon Dec 13 05:11:29 CST 2021
+Logan has started a new session at Mon Dec 13 05:14:36 CST 2021
+Logan has started a new session at Mon Dec 13 05:38:33 CST 2021
+Game Start: Numbers at start: 2 5 5 12, Difficulty: 5,Points: 0,Solution Expressions: 
+2 + 5 + 5 + 12
+2 + 5 - 5 * 12
+2 - 5 + 5 * 12
+2 * 5 / 5 * 12
+2 / 5 * 5 * 12
+Student Work: 5 - 5 = 0 Time: Mon Dec 13 05:38:48 CST 2021Student Work: 12 * 2 = 24 Time: Mon Dec 13 05:38:53 CST 2021Student Work: 4 * 12 = 48 Time: Mon Dec 13 05:39:37 CST 2021Student Work: 8 / 4 = 2 Time: Mon Dec 13 05:39:52 CST 2021Student Work: 2 * 1 = 2 Time: Mon Dec 13 05:39:58 CST 2021Student Work: 2 + 12 = 14 Time: Mon Dec 13 05:40:04 CST 2021Logan has started a new session at Mon Dec 13 05:40:42 CST 2021
+Game Start: Numbers at start: 13 1 7 4, Difficulty: 5,Points: 0,Solution Expressions: 
+13 + 1 * 7 / 4
+13 * 1 + 7 + 4
+13 * 1 - 7 * 4
+13 / 1 + 7 + 4
+13 / 1 - 7 * 4
+Student Work: 7 * 4 = 28 Time: Mon Dec 13 05:40:50 CST 2021Student Work: 4 * 13 = 52 Time: Mon Dec 13 05:41:00 CST 2021Student Work: 13 - 7 = 6 Time: Mon Dec 13 05:41:16 CST 2021Student Work: 6 * 4 = 24 Time: Mon Dec 13 05:41:21 CST 2021

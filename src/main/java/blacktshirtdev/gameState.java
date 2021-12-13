@@ -69,7 +69,7 @@ public class gameState {
     
     public static boolean ResetFlag = false;
     public static boolean TwoPlayerFlag = false;
-    public static boolean coopFlag = false;
+//    public static boolean coopFlag = false;
     public static boolean compFlag = false;
     public static boolean chaosFlag = false;
     
@@ -104,6 +104,8 @@ public class gameState {
     //Timer
     public static int delay = 1000;
     public static Timer chaosTimer = null;
+    
+    public static Timer compTimer = null;
     
 
     public gameState(EntryGUI2 window, boolean isTwoPlayer, boolean isChaosMode) {
@@ -205,21 +207,31 @@ public class gameState {
         gui = window;
         
         if (isTwoPlayer == false){
-        
+            
+            gui.nameSettingLabel.setText(name);
+            gui.gradeSettingLabel.setText(grade);
+            gui.teacherSettingLabel .setText(teacher);
+            
             CardLayout card = (CardLayout) gui.mainPanel.getLayout();
             card.show(gui.mainPanel, "panelSinglePlayerOptions");
     
         } else if (isTwoPlayer == true){
             
             CardLayout card = (CardLayout) gui.mainPanel.getLayout();
-            card.show(gui.mainPanel, "panelTwoPlayerCoopofComp");
+            card.show(gui.mainPanel, "panelTwoPlayerOption");
+            
+            compFlag = true;
             
         }
         
         if (isChaosMode == false){
         
-            CardLayout card = (CardLayout) gui.mainPanel.getLayout();
-            card.show(gui.mainPanel, "panelSinglePlayerOptions");
+            gui.nameSettingLabel.setText(name);
+            gui.gradeSettingLabel.setText(grade);
+            gui.teacherNameTextField.setText(teacher);
+            
+//            CardLayout card = (CardLayout) gui.mainPanel.getLayout();
+//            card.show(gui.mainPanel, "panelSinglePlayerOptions");
         
         } else if (isChaosMode == true){
         
@@ -329,20 +341,7 @@ public class gameState {
                     
                     try {
                         FileWriter logWriter = new FileWriter(fileLog, true);
-                        logWriter.write("Student Work: " + gui.firstNumLabel.getText() + " " + operator + " " + gui.secondNumLabel.getText() + " = " + String.valueOf(userCalculation(buttPress, operator)) + " Time: " + Calendar.getInstance().getTime().toString() + " , Relevant Solutions: " );
-                        
-                        expressions.forEach((exp) -> {
-                            
-                            if(exp.toString().contains(gui.firstNumLabel.getText() + " " + operator + " " + gui.secondNumLabel.getText())){
-                                try {
-                                    logWriter.write(exp.toString());
-                                    logWriter.write("\n");
-                                } catch (IOException ex) {
-                                    Logger.getLogger(gameState.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                            }
-                        });
-                        
+                        logWriter.write("Student Work: " + gui.firstNumLabel.getText() + " " + operator + " " + gui.secondNumLabel.getText() + " = " + String.valueOf(userCalculation(buttPress, operator)) + " Time: " + Calendar.getInstance().getTime().toString() );
                         logWriter.flush();
                         logWriter.close();
                     } catch (IOException ex) {
@@ -438,15 +437,17 @@ public class gameState {
        
        gui.startTwoPlayerButt.addActionListener((ActionEvent e) -> {
            twoPlayerFlag = true;
+           String message = " ";
             try {
                 if (gui.beServerRadioButton.isSelected() == true && !gui.serverPortTextField.getText().equalsIgnoreCase("")) {
                     //This instance will be a server
                     
                     String port = gui.serverPortTextField.getText();
                     int portNum = Integer.valueOf(port);
+                    
+                    ss = new ServerSocket(portNum);
                     gui.addressToConnectToLabel.setText("Tell friend to connect to address " + ss.getInetAddress() +
                             " and port number " + port);
-                    ss = new ServerSocket(portNum);
                     s  = ss.accept();
                     
                     
@@ -536,7 +537,48 @@ public class gameState {
                     Logger.getLogger(gameState.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
+            
+            TimerTask task = new TimerTask() {
+               @Override
+               public void run() {
+                   while(!message.equals("YouLose")){
+                       try {
+                           Socket s = new Socket("localhost",Integer.getInteger(gui.connectToPortTextField.getText()));
+                           DataInputStream dinComp = new DataInputStream(s.getInputStream());
+                       } catch (IOException ex) {
+                           Logger.getLogger(gameState.class.getName()).log(Level.SEVERE, null, ex);
+                       }  
+                   } 
+                       
+                   CardLayout card = (CardLayout) gui.mainPanel.getLayout();
+                   //card.show(gui.mainPanel, "panelTwoPlayer");
+                   card.show(gui.mainPanel, "panelYouLose");
+               }
+           };
+
+           compTimer = new Timer("Comp");
+           
+           compTimer.schedule(task, 1, 1000); 
+            
         });
+       
+       gui.youLoseQuitButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {    
+                CardLayout card = (CardLayout) gui.mainPanel.getLayout();
+                //card.show(gui.mainPanel, "panelTwoPlayer");
+                card.show(gui.mainPanel, "panelStartMenu");
+            }
+        });
+       
+       gui.startSettingsButt.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout card = (CardLayout) gui.mainPanel.getLayout();
+                //card.show(gui.mainPanel, "panelTwoPlayer");
+                card.show(gui.mainPanel, "panelStartSettings");
+            }
+       });
        
        gui.twoPlayerQuitButt.addActionListener((ActionEvent e) -> {
            goBackToMainPanel();
@@ -551,16 +593,7 @@ public class gameState {
            compFlag = true;
         });
        
-       gui.coopStartButton.addActionListener((ActionEvent e) -> {
-           CardLayout card = (CardLayout) gui.mainPanel.getLayout();
-           //card.show(gui.mainPanel, "panelTwoPlayer");
-           card.show(gui.mainPanel, "panelTwoPlayerOption");
-           
-           coopFlag = true;
-        });
-       
-       
-       
+
        
        
        //Single Player Buttons
@@ -710,6 +743,10 @@ public class gameState {
     //Chaos Mode Option On
     
     public static void chaosMode(){
+        
+            gui.nameSettingLabel.setText(name);
+            gui.gradeSettingLabel.setText(grade);
+            gui.teacherNameTextField.setText(teacher);
     
            CardLayout card = (CardLayout) gui.mainPanel.getLayout();
            card.show(gui.mainPanel, "panelSinglePlayerOptions");
@@ -761,6 +798,8 @@ public class gameState {
     
     public static void displayWin(){
         
+        String response = " ";
+        
         if(chaosFlag == false){
             points = points + 500;
         } else if(chaosFlag == true){
@@ -770,6 +809,20 @@ public class gameState {
             
         }
         
+        if(compFlag == true){
+        
+            if(ss != null){
+                    
+                while(!response.equals("YouWin!")){
+                    try {
+                        dout.writeUTF("YouLost!");
+                        dout.flush();
+                    } catch (IOException ex) {
+                        Logger.getLogger(gameState.class.getName()).log(Level.SEVERE, null, ex);
+                    } 
+                }
+            } 
+        }
         
         
         highScore = highScore + points;
@@ -797,26 +850,6 @@ public class gameState {
     
     }
     
-    public static String getAgentControl(){
-        
-        String result = "";
-    
-        if (gui.noInteractionRadio.isEnabled()){
-            
-            result = "noInteract";
-        
-        } else if (gui.observingAgentRadio.isEnabled()){
-        
-            result = "observing";
-        
-        } else if (gui.watchAgentRadio.isEnabled()){
-        
-            result = "studentWatches";
-        
-        }
-    
-        return result;
-    }
     
     public static void shuffleNumbers(){
     
@@ -1018,6 +1051,10 @@ public class gameState {
       
     
     static void gotoSinglePlayerOptions(){
+        
+        gui.nameSettingLabel.setText(name);
+        gui.gradeSettingLabel.setText(grade);
+        gui.teacherNameTextField.setText(teacher);
     
         CardLayout card = (CardLayout) gui.mainPanel.getLayout();
         card.show(gui.mainPanel, "panelSinglePlayerOptions"); 

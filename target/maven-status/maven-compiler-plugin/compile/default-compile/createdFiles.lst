@@ -11,8 +11,8 @@ blacktshirtdev\helpGUI$1.class
 blacktshirtdev\TwentyFourGame$6.class
 blacktshirtdev\EntryGUI2.class
 blacktshirtdev\TwentyFourGame$5.class
-twentyFourei\Entity.class
 blacktshirtdev\gameState$1checkForTheWin.class
+blacktshirtdev\gameState$5.class
 blacktshirtdev\agentQuestionGUI$1.class
 blacktshirtdev\gameState$2.class
 blacktshirtdev\TwentyFourGame$3.class
@@ -20,8 +20,10 @@ blacktshirtdev\EntryGUI2$4.class
 blacktshirtdev\gameState$1.class
 blacktshirtdev\EntryGUI2$2.class
 blacktshirtdev\TwentyFourGame$2.class
+blacktshirtdev\TwentyFourGame$7.class
 blacktshirtdev\gameState$1operButtonChanged.class
-twentyFourei\twentyfourei.class
+blacktshirtdev\gameState$3.class
+blacktshirtdev\gameState$4.class
 blacktshirtdev\EntryGUI2$5.class
 blacktshirtdev\helpGUI.class
 blacktshirtdev\TwentyFourGame$4.class
